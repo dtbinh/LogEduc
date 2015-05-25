@@ -1,5 +1,5 @@
 <?php 
-
+include('var.php');
 function accentsPhp($text)
 {
   $text = htmlentities($text, ENT_NOQUOTES, "UTF-8");
@@ -10,11 +10,11 @@ function accentsPhp($text)
 function loadClass($class) {
 
     if (substr(realpath('.'), 0, 8) == "C:\\wamp\\") { //Windows
-        require 'C:\\wamp\\www\\MIF22\\class\\'.$class .'.class.php'; 
+        require 'C:\\wamp\\www\\LogEduc\\class\\'.$class .'.class.php'; 
     } else if (substr(realpath('.'), 0, 8) == "/var/www") { //Ubuntu 
-        require '/var/www/html/MIF22/class/'.$class .'.class.php'; 
+        require '/var/www/html/LogEduc/class/'.$class .'.class.php'; 
     } else { //Bthouverez.fr
-      require '/homez.36/bthouver/www/MIF22/class/'.$class .'.class.php'; 
+      require '/homez.36/bthouver/www/LogEduc/class/'.$class .'.class.php'; 
     }
 
 }
@@ -55,22 +55,11 @@ function scanDirectoryToArray($dir, $type = null, $show = false) {
 
 function connectDB() {
 
-    if (substr(realpath('.'), 0, 8) == "C:\\wamp\\") { //Windows
-        $serv = 'localhost';
-        $user = 'root';
-        $pass = '';
-        $base = 'MIF22-LogEdu';
-    } else if (substr(realpath('.'), 0, 8) == "/var/www") { //Ubuntu 
-        $serv = 'localhost';
-        $user = 'root';
-        $pass = 'loul22';
-        $base = 'MIF22-LogEdu';
-    } else { //Bthouverez.fr
-        $serv = 'mysql51-129.bdb';
-        $user = 'bthouverdev';
-        $pass = 'HefCeR4vvnsM';
-        $base = 'bthouverdev';
-    }
+        $serv = $GLOBALS['SERV'];
+        $user = $GLOBALS['USER'];
+        $pass = $GLOBALS['PASS'];
+        $base = $GLOBALS['BASE'];
+
     
     $db = mysql_connect($serv, $user, $pass) or die ('Erreur SQL (connection) : '.mysql_error());
     mysql_select_db($base, $db) or die('SQL Error (selection database) : ' . mysql_error());

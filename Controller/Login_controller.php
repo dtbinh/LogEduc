@@ -9,9 +9,7 @@ unset($_SESSION['creationSuccess']);
 	if(isset($_POST['user_login']) && isset($_POST['user_pass'])) {
 
 		$resConnect = checkUserConnexion($_POST['user_login'], $_POST['user_pass']);
-
 		if($resConnect == 1) {
-
 			$user = getUserByName($_POST['user_login']);
 
 			$_SESSION['user'] = serialize($user);
