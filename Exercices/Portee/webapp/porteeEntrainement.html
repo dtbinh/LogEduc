@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./../resources/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="indexStyle.css" type="text/css">
+    </head>
+<body>
+<div class="row">
+<div class="col-sm-12 titre">
+	<H1><b>Entraine toi !</b></H1>
+</div>
+</div>
+<div class = "row PersoPlugn">
+	<div class="col-sm-2 col-sm-offset-3" id="persoContainer">
+		<img id="perso" height="250" width = "250" src="Perso.jpeg"/>
+	</div>
+	<div class="col-sm-6" id="BulleText">
+	<div id="TextContent"><p>Bonjour camarade, je suis Rémi Fasol !
+	Place des notes sur la portée !</p></div>
+	
+	</div>
+</div>
+<div class="row">
+	<div class = "col-sm-10 col-sm-offset-1" id=porteeContainer>
+		<table id='portee'>
+		</table>	
+	</div>
+</div>
+
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="./../resources/jquery-ui-1.11.4/jquery-ui.js"> </script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="perso.js"></script>
+<script src="portee.js"></script>
+
+<script>
+genererPortee(20,20);
+gestionPerso();
+</script>
+</body>
+</html>

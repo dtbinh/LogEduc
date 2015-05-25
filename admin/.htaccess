@@ -1,0 +1,4 @@
+AuthName "Administration - Authentification required"
+AuthType Basic
+AuthUserFile "/homez.36/bthouver/www/skatealyon/admin/.htpasswd"
+Require valid-user
