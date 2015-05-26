@@ -3,6 +3,8 @@ require_once('../db/database.php');
 spl_autoload_register('loadClass');
 //if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
 $news = getNews();
+$user = unserialize($_SESSION['user']);
+$level = getLevelByUser($user);
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +44,11 @@ $news = getNews();
 <section id="panelExercices">
   <table>
     <tr>
-      <td><button class="btn btn-primary">Instruments</button></td>
-      <td><a href="../Exercices/Portee/webapp/portee.html"><button class="btn btn-success">Portée</button></a></td>
+      <td><a href="../Exercices/Instruments/quiz.php"><button class="btn btn-primary">Instruments<br>Niveau <?= $level[1] ?></base></button></a></td>
+      <td><a href="../Exercices/Portee/webapp/portee.html"><button class="btn btn-success">Portée<br>Niveau <?= $level[2] ?></button></a></td>
     </tr>
     <tr>
-      <td><a href="../Exercices/Piano"><button class="btn btn-danger">Piano virtuel</button></a></td>
+      <td><a href="../Exercices/Piano"><button class="btn btn-danger">Piano virtuel<br> Niveau <?= $level[3] ?></button></a></td>
       <td><button class="btn btn-warning disabled">En construction...</button></td>
     </tr>
   </table>
