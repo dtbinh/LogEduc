@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Bienvenue dans notre quiz</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <!-- inclusion du style CSS de base -->
+       <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
+       <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+      <!-- inclusion des librairies jQuery et jQuery UI (fichier principal et plugins) -->
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+      <style>
+
+        .correct{
+          background-color: lightgreen;
+        }
+        .faux{
+          background-color: tomato;
+        }
+      </style>
+
+    </head>
+    <body>
+    <?= "couou" ?>
+                <div id="test_status" class="text-center"></div>
+                <div id="test" class="testJeux text-center container"></div>
+
+                <div class="container">
+                <div class="jumbotron correct">
+                  <div class="container">
+
+                  <h1>Quiz</h1>
+                  <p>Jouer au quiz</p>
+                  <p><a class="btn btn-primary btn-lg" href="quiz.html" role="button">C'est parti !!!</a></p>
+                  </div>
+                  </div>
+                  <div class="jumbotron faux">
+                  <div class="container">
+
+                    <h1>Générateur d'exercices</h1>
+                    <p>Remplissez le formulaire pour générer des exercices. Accès autorisé uniquement aux enseignants</p>
+                    <p><a class="btn btn-primary btn-lg" href="gen.html" role="button">Créer</a></p>
+                  </div>
+                  </div>
+                </div>
+
+    </body>
+
+</html>

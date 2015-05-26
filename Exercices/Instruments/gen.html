@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="fr">
+  <title>Générateur de quiz</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- inclusion du style CSS de base -->
+  <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+  <!-- inclusion des librairies jQuery et jQuery UI (fichier principal et plugins) -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+</head>
+
+
+<body>
+
+<div class="container">
+  <h1>Remplissez le générateur:</h1>
+  <form role="form" method="post" action="submit.php" enctype="multipart/form-data"  onSubmit="return isValide();">
+    <div class="form-group ">
+      <label for="question">Intitulé de votre question</label>
+      <input type="text" class="form-control alert-info" name="question" id="question" placeholder="Tapez l'intitulé de la question">
+    </div>
+    <div class="form-group">
+      <label for="imageA">URL de l'image A:</label>
+      <input type="text" class="form-control alert-info" name="imageA" id="imageA" placeholder="http://www.exemple.fr/imageA.jpg">
+    </div>
+    <div class="form-group">
+      <label for="imageB">URL de l'image B:</label>
+      <input type="text" class="form-control alert-info" name="imageB" id="imageB" placeholder="http://www.exemple.fr/imageB.jpg">
+    </div>
+    <div class="form-group">
+      <label for="imageC">URL de l'image C:</label>
+      <input type="text" class="form-control alert-info" name="imageC" id="imageC" placeholder="http://www.exemple.fr/imageC.jpg">
+    </div>
+    <div class="form-group">
+      <label for="imageD">URL de l'image D:</label>
+      <input type="text" class="form-control alert-info" name="imageD" id="imageD" placeholder="http://www.exemple.fr/imageD.jpg">
+    </div>
+    <div class="form-group">
+      <label for="reponse">Lettre de la réponse en majuscule (A, B, C ou D)</label>
+      <input type="text" class="form-control alert-info" name="reponse" id="reponse" placeholder="Entrez une lettre en majuscule">
+    </div>
+    <div class="form-group">
+      <label for="indice">Indice pour l'apprenant</label>
+      <input type="text" class="form-control alert-info" name="indice" id="indice" placeholder="Donnez un indice ou un conseil à l'apprenant">
+    </div>
+    <div class="form-group">
+      <label for="explication">Explication pour l'apprenant</label>
+      <input type="text" class="form-control alert-info" name="explication" id="explication" placeholder="Donner une explication en cas d'échec dans la résolution de la question">
+    </div>
+
+    <button type="submit" name="submit" class="btn btn-primary center-block">Valider</button>
+  </form>
+</div>
+
+
+</body>
+</html>
