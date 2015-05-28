@@ -72,6 +72,7 @@ $level = getLevelByUser($user);
             <button class="buttonPanel btn btn-warning disabled">En construction...</button>
         </td>
     </tr></table>
+
 </section>
 
 <script type="text/javascript"  src="../plugin/jquery/jquery.min.js"> </script>
