@@ -91,12 +91,29 @@ function getUsers() {
     $user = new User();
     $users = array();
     while ($data = mysql_fetch_assoc($req)) {
-        array_push($users, new User($data['id_user'], $data['username_user'], $data['password_user']));
+        array_push($users, new User($data['id_user'], $data['username_user'], $data['password_user'], $data['type_user']));
         $user = new User();
     }
 
     mysql_close($db);
     //echo '<pre>';var_dump($users);echo '</pre>';
+    return $users;
+}
+
+function getStudents() {
+    $db = connectDB();
+
+    $sql = 'SELECT * FROM mif22_user WHERE type_user != 0';
+    $req = mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    $user = new User();
+    $users = array();
+    while ($data = mysql_fetch_assoc($req)) {
+        array_push($users, new User($data['id_user'], $data['username_user'], $data['password_user'], $data['type_user']));
+        $user = new User();
+    }
+
+    mysql_close($db);
+    
     return $users;
 }
 
@@ -110,6 +127,7 @@ function getUserByName($name) {
             $user->setId($data['id_user']);
             $user->setUsername($data['username_user']);
             $user->setPass($data['pass_user']);
+            $user->setType($data['type_user']);
     }
 
     mysql_close($db);   
@@ -119,19 +137,20 @@ function getUserByName($name) {
 function addUser($user) {
     $db = connectDB();
     //Ajout de l'user dans la table USER
-    $sql = 'INSERT INTO mif22_user (username_user, password_user) VALUES ("'.$user->getUsername().'", "'.$user->getPass().'");';
+    $sql = 'INSERT INTO mif22_user (username_user, password_user, type_user) VALUES ("'.$user->getUsername().'", "'.$user->getPass().'",'.$user->getType().');';
     mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
     mysql_close($db);  
+    if($user->getType() != 0) { //Si ce n'est pas un enseignant
+        //Selection de l'id du dernier user
+        $user = getUserByName($user->getUsername());
 
-    //Selection de l'id du dernier user
-    $user = getUserByName($user->getUsername());
-
-    $db = connectDB();
-    //Initialisation des niveaux du joueur
-    $sql = 'INSERT INTO mif22_levelUserExercice (`id_user`, `id_exercice`, `level`) VALUES ('.$user->getId().', 1, 0), ('.$user->getId().', 2, 0), ('.$user->getId().', 3, 0);';
-    echo $sql;
-    mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
-    mysql_close($db);   
+        $db = connectDB();
+        //Initialisation des niveaux du joueur
+        $sql = 'INSERT INTO mif22_levelUserExercice (`id_user`, `id_exercice`, `level`) VALUES ('.$user->getId().', 1, 0), ('.$user->getId().', 2, 0), ('.$user->getId().', 3, 0);';
+        echo $sql;
+        mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
+        mysql_close($db);  
+    } 
 }
 
 
@@ -159,7 +178,14 @@ function getLevelByUser($user) {
     $req = mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
     $level = array();
     while ($data = mysql_fetch_assoc($req)) {
-        $level[$data['id_exercice']] = intval($data['level']);
+        if($data['id_exercice'] == 1){
+            $strExo = "Instruments";
+        } else if($data['id_exercice'] == 2){
+            $strExo = "Portee";
+        } else if($data['id_exercice'] == 3){
+            $strExo = "Piano";
+        }
+        $level[$strExo] = intval($data['level']);
     }
 
     mysql_close($db);

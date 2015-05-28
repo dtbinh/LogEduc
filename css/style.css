@@ -114,12 +114,30 @@ h1, h2, h3, h4 {
    margin: auto;
 }
 
-#panelExercices td button {
+#panelExercices .tdPanelLvl1 {
    width: 350px;
    height: 220px;
+}
+
+#panelExercices .buttonPanel {
+   width: 350px;
+   height: 220px; /* 220 -> 80 */
+   vertical-align: top;
    margin: 5px;
    font-size: 22px;
+   transition: height 1s;
 }
+
+#panelExercices .subTableExercice td button{
+   display: none;
+} 
+
+#panelExercices .subTableExercice .btn {
+   width: 172px;
+   height: 0px;
+   margin-left: 5px;
+   transition: height 1s;
+} 
 
 /* PROFIL */
 #profil {

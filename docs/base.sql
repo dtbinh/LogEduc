@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `mif22_user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `username_user` varchar(255) NOT NULL,
   `password_user` varchar(255) NOT NULL,
+  `type_user` int(255) NOT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
@@ -62,10 +63,11 @@ CREATE TABLE IF NOT EXISTS `mif22_user` (
 -- Contenu de la table `mif22_user`
 --
 
-INSERT INTO `mif22_user` (`id_user`, `username_user`, `password_user`) VALUES
-(1, 'babs', 'lol'),
-(2, 'SmartiesParty', 'mif22'),
-(3, 'klu', 'klu');
+INSERT INTO `mif22_user` (`id_user`, `username_user`, `password_user`, `type_user`) VALUES
+(1, 'babs', 'lol', 1),
+(2, 'SmartiesParty', 'mif22', 1),
+(3, 'klu', 'klu', 1),
+(4, 'Maitre', 'Gims', 0);
 
 -- ----------------------------------------------------------------------------------------------------------------
 --

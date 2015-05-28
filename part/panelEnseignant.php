@@ -3,7 +3,8 @@ require_once('../db/database.php');
 spl_autoload_register('loadClass');
 if(!isset($_SESSION['user']) || $_SESSION['username'] == "-error-") header('Location: accueil.php');
 $user = unserialize($_SESSION['user']);
-$level = getLevelByUser($user);
+$students = getStudents();
+$levels = array();
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +18,23 @@ $level = getLevelByUser($user);
   </head>
  
   <body id="profil">
-  <a href="main.php"><button class="btn btn-primary">Retour à l'accueil</button></a>
-  <h1>Profil de <?= $_SESSION['username'] ?></h1>
 
-  <h2>Exercices instruments - Niveau <?= $level['Instruments'] ?></h2>
+	<form method="post" action="../Controller/Login_controller.php">
+	<input type="hidden" name="deconnexion" />
+	<input type="submit"class="btn btn-danger" value="Quitter" />
+	</form>
+  	<h1>Panel de l'enseignant <?= $_SESSION['username'] ?></h1>
 
-  <h2>Exercices portée - Niveau <?= $level['Portee'] ?></h2>
-
-  <h2>Exercices Piano Virtuel - Niveau <?= $level['Piano'] ?></h2>
-
+	<h2> Les étudiants</h2>
+	<?php 
+	foreach($students as $student) {
+		$level = getLevelByUser($student);
+		echo '<h3>'.$student->getUsername().'</h3>';
+		foreach($level as $exo => $lvl) {
+			echo 'Exo '.$exo.' : Level : '.$lvl.'<br>';
+		}
+	}
+	?> 
 <script type="text/javascript"  src="../plugin/jquery/jquery.min.js"> </script>
 <script type="text/javascript"  src="../js/script.js"> </script>
 </body>

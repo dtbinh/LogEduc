@@ -14,7 +14,8 @@ unset($_SESSION['creationSuccess']);
 
 			$_SESSION['user'] = serialize($user);
 			$_SESSION['username'] = $user->getUsername();
-			header('Location: ../part/main.php');
+			if($user->getType() == 0) header('Location: ../part/panelEnseignant.php');
+			else header('Location: ../part/main.php');
 		
 			
 		} else {
@@ -24,7 +25,8 @@ unset($_SESSION['creationSuccess']);
 				$_SESSION['loginError'] = "Mauvais mot de passe";
 			}
 			$_SESSION['username'] = '-errorConnexion-';
-			header('Location: ../part/accueil.php');
+
+			 header('Location: ../part/accueil.php');
 		}
 
 		//CREATION COMPTE
@@ -33,14 +35,12 @@ unset($_SESSION['creationSuccess']);
 			$user = new User();
 			$user->setUsername($_POST['user_login_c']);
 			$user->setPass($_POST['user_pass_c']);
+			$user->setType(1);
 			addUser($user);
 
 			$_SESSION['creationSuccess'] = "Vous avez cr&eacute;e un nouveau compte: nom d'utilisateur : ".$user->getUsername().", mot de passe : ".$user->getPass();
 			
 			header('Location: ../part/accueil.php');
-			//echo '<pre>';
-			//var_dump($user);
-			//echo '</pre>';
 		} else {
 			$_SESSION['loginError'] = "Merci de remplir tous les champs";
 			$_SESSION['username'] = '-errorCreation-';
