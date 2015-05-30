@@ -5,5 +5,8 @@
 * http://www.felipefialho.com/
 */
 
+// Site
+@import "site.less";
+
 // Piano
 @import "piano.less";
