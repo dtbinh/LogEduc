@@ -3,7 +3,9 @@ require_once('../db/database.php');
 spl_autoload_register('loadClass');
 if(!isset($_SESSION['user']) || $_SESSION['username'] == "-error-") header('Location: accueil.php');
 $user = unserialize($_SESSION['user']);
-$level = getLevelByUser($user);
+
+$level = $user->getLevel();
+//echo '<pre>';var_dump($user);echo '</pre>';
 ?>
 
 <!DOCTYPE html>

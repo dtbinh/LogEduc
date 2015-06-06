@@ -130,6 +130,8 @@ function getUserByName($name) {
             $user->setType($data['type_user']);
     }
 
+    $user->setLevel(getLevelByUser($user));
+
     mysql_close($db);   
     return $user;
 }

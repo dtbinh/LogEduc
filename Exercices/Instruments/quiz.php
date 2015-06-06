@@ -32,6 +32,12 @@ and open the template in the editor.
         .bouton{
           margin-top: 50px;
         }
+        .ui-draggable:hover {
+          cursor: grab;
+        }
+        .DepotVent, .explication {
+          min-height: 200px;
+        }
       </style>
 
 
@@ -112,7 +118,7 @@ and open the template in the editor.
         }
         question = questions[pos][0];
 
-        _("test_status").innerHTML = "<h4>Question "+(pos+1)+" sur "+questions.length+"</h4><h1 >Q"+(pos+1)+": "+question+"</h1>";
+        _("test_status").innerHTML = "<h4>Question "+(pos+1)+" sur "+questions.length+"</h4><h1>"+question+"</h1>";
 
         chA = questions[pos][1];
         chB = questions[pos][2];
@@ -128,9 +134,9 @@ and open the template in the editor.
           +"<div class='col-xs-6 col-sm-3'><img class='img-responsive img-rounded  thumbnail' src=\'"+chB+"' alt='B'  /></div>"
           +'<div class=\'col-xs-6 col-sm-3\'><img class=\'img-responsive img-rounded  thumbnail\' src=\''+chC+"' alt='C'  /></div>"
           +"<div class='col-xs-6 col-sm-3'><img class='img-responsive img-rounded  thumbnail' src="+chD+" alt='D'></div>"
-          +"</div></div>"+"<div><span class='glyphicon glyphicon-triangle-bottom'>"+"<h3>Déplace la bonne image dans le cadre marqué <small>”Glissez une image ici”</small></h3></span></div>"
-          +"<div class='DepotVent col-xs-6 .col-md-4 jumbotron'><p>Glissez une image ici.</p></div>"
-          +"<div class='col-xs-6 .col-md-4'>"+"<div><div class='aide'>"+"<div class='explication jumbotron'><kbd><kbd>...</kbd></kbd></div>"
+          +"</div></div>"+"<div><span class='glyphicon glyphicon-triangle-bottom'>"+"</span></div>"
+          +"<div class='DepotVent col-xs-6 .col-md-4 jumbotron'><p><br>Glisse la bonne image ici</p></div>"
+          +"<div class='col-xs-6 .col-md-4'>"+"<div><div class='aide'>"+"<div class='explication jumbotron'><kbd><kbd>Rémi attend ta réponse !</kbd></kbd></div>"
           +"<div class='score bouton'><kbd><kbd>SCORE</kbd> : "+cpt+"<kbd></kbd></kbd></div>"
           +"<button onclick='checkAnswer()' type='submit' class='btn btn-primary  bouton'>Question Suivante</button>"+"</div> </div> </div>";
         test.innerHTML = contenu;

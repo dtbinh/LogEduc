@@ -57,7 +57,7 @@ $level = getLevelByUser($user);
             <button class="btnPortee buttonPanel btn btn-success">Portée<br>Niveau <?= $level['Portee'] ?></button>
                 <table class="subTableExercice tablePortee"><tr>
                     <td><button class="btn btn-success">Cours</button></td>
-                    <td><a href="../Exercices/Portee/webapp/porteeExGen1.html"><button class="btn btn-success">Exercices</button></a></td>
+                    <td><a href="../Exercices/Portee/webapp/porteeExGen<?=$user->getLevelPortee()?>.html"><button class="btn btn-success">Exercices</button></a></td>
                 </tr></table>
         </td>
         </tr><tr>
