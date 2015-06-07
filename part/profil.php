@@ -16,6 +16,13 @@ $level = $user->getLevel();
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../plugin/bootstrap/css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <style type="text/css">
+    body {
+      padding-top: 15px;
+      width: 80%;
+      margin: auto;
+    }
+    </style>
   </head>
  
   <body id="profil">
@@ -24,7 +31,7 @@ $level = $user->getLevel();
 
   <h2>Exercices instruments - Niveau <?= $level['Instruments'] ?></h2>
 
-  <h2>Exercices portée - Niveau <?= $level['Portee'] ?></h2>
+  <h2>Exercices portée</h2>
     <ul>
       <li>Exercice 1 Sol : <?= $level['Portee']['Ex1Sol']; ?></li>
       <li>Exercice 2 Sol : <?=$level['Portee']['Ex2Sol']; ?></li>

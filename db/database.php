@@ -218,3 +218,23 @@ function getLevelByUser($user) {
     //echo '<pre>';var_dump($news);echo '</pre>';
     return $level;
 }
+
+function levelUp($user, $exo) {
+
+    $db = connectDB();
+
+    $sql = 'SELECT level FROM mif22_levelUserExercice WHERE id_user = '.$user->getId().' AND id_exercice = '.$exo.';';
+    $req = mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    while ($data = mysql_fetch_assoc($req)) {
+       $level = intval($data['level']);
+    }
+    mysql_close($db);
+
+    $level++;
+
+    $db = connectDB();
+    $sql = 'UPDATE mif22_levelUserExercice SET level = '.$level.' WHERE id_user = '.$user->getId().' AND id_exercice = '.$exo.';';
+    mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    mysql_close($db);  
+
+}
