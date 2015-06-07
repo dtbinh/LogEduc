@@ -5,7 +5,7 @@ if(!isset($_SESSION['user']) || $_SESSION['username'] == "-error-") header('Loca
 $user = unserialize($_SESSION['user']);
 
 $level = $user->getLevel();
-//echo '<pre>';var_dump($user);echo '</pre>';
+echo '<pre>';var_dump($user);echo '</pre>';
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,12 @@ $level = $user->getLevel();
       <li>Exercice 2 Fa : <?= $level['Portee']['Ex2Fa']; ?></li>
     </ul>
 
-  <h2>Exercices Piano Virtuel - Niveau <?= $level['Piano'] ?></h2>
+  <h2>Exercices Piano Virtuel</h2>
+  <ul>
+      <li>Exercice 1 : <?= $level['Piano']['Exo1']; ?></li>
+      <li>Exercice 2 : <?= $level['Piano']['Exo2']; ?></li>
+      <li>Exercice 3 : <?= $level['Piano']['Exo3']; ?></li>
+    </ul>
 
 <script type="text/javascript"  src="../plugin/jquery/jquery.min.js"> </script>
 <script type="text/javascript"  src="../js/script.js"> </script>

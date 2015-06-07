@@ -54,7 +54,7 @@ $level = getLevelByUser($user);
                 </tr></table>
         </td>
         <td class="tdPanelLvl1">
-            <button class="btnPortee buttonPanel btn btn-primary">Portée<br>Niveau <?= $level['Portee']['Ex1Sol'] ?></button>
+            <button class="btnPortee buttonPanel btn btn-primary">Portée</button>
                 <table class="subTableExercice tablePortee"><tr>
                     <td><a href="../Exercices/Portee/webapp/CourPortee.html"><button class="btn btn-primary">Cours</button></a></td>
                     <td><a href="../Exercices/Portee/webapp/porteeExGen<?=$user->getLevelPortee()?>.html"><button class="btn btn-primary">Exercices</button></a></td>
@@ -62,7 +62,7 @@ $level = getLevelByUser($user);
         </td>
         </tr><tr>
         <td class="tdPanelLvl1">
-            <button class="btnPiano buttonPanel btn btn-danger">Piano<br> Niveau <?= $level['Piano'] ?></button>
+            <button class="btnPiano buttonPanel btn btn-danger">Piano virtuel</button>
                 <table class="subTableExercice tablePiano"><tr>
                     <td><button class="btn btn-danger">Cours</button></td>
                     <td><a href="../Exercices/Piano"><button class="btn btn-danger">Exercices</button></a></td>
