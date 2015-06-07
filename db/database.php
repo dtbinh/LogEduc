@@ -148,7 +148,13 @@ function addUser($user) {
 
         $db = connectDB();
         //Initialisation des niveaux du joueur
-        $sql = 'INSERT INTO mif22_levelUserExercice (`id_user`, `id_exercice`, `level`) VALUES ('.$user->getId().', 1, 0), ('.$user->getId().', 2, 0), ('.$user->getId().', 3, 0);';
+        $sql = 'INSERT INTO mif22_levelUserExercice (`id_user`, `id_exercice`, `level`) VALUES 
+        ('.$user->getId().', 1, 0), 
+        ('.$user->getId().', 21, 0), 
+        ('.$user->getId().', 22, 0), 
+        ('.$user->getId().', 23, 0), 
+        ('.$user->getId().', 24, 0), 
+        ('.$user->getId().', 3, 0);';
         echo $sql;
         mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
         mysql_close($db);  
@@ -173,6 +179,7 @@ function getNews() {
 
 function getLevelByUser($user) {
     $db = connectDB();
+    $tmp = array();
 //echo '<pre>';var_dump($user);echo '</pre>'; 
 
     $sql = 'SELECT * FROM mif22_levelUserExercice WHERE id_user='.$user->getId();
@@ -182,12 +189,29 @@ function getLevelByUser($user) {
     while ($data = mysql_fetch_assoc($req)) {
         if($data['id_exercice'] == 1){
             $strExo = "Instruments";
-        } else if($data['id_exercice'] == 2){
-            $strExo = "Portee";
+            $level[$strExo] = intval($data['level']);
         } else if($data['id_exercice'] == 3){
             $strExo = "Piano";
-        }
-        $level[$strExo] = intval($data['level']);
+            $level[$strExo] = intval($data['level']);
+        } else {
+            switch($data['id_exercice']) {
+                case 21:
+                    $tmp['Ex1Sol'] = intval($data['level']);
+                break;
+                case 22:
+                    $tmp['Ex2Sol'] = intval($data['level']);
+                break;
+                case 23:
+                    $tmp['Ex1Fa'] = intval($data['level']);
+                break;
+                case 24:
+                    $tmp['Ex2Fa'] = intval($data['level']);
+                break;
+            }  
+        } 
+        $level['Portee'] = Array();
+        $level['Portee'] = $tmp;
+       
     }
 
     mysql_close($db);

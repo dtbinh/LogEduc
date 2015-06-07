@@ -25,6 +25,12 @@ $level = $user->getLevel();
   <h2>Exercices instruments - Niveau <?= $level['Instruments'] ?></h2>
 
   <h2>Exercices portée - Niveau <?= $level['Portee'] ?></h2>
+    <ul>
+      <li>Exercice 1 Sol : <?= $level['Portee']['Ex1Sol']; ?></li>
+      <li>Exercice 2 Sol : <?=$level['Portee']['Ex2Sol']; ?></li>
+      <li>Exercice 1 Fa : <?= $level['Portee']['Ex1Fa']; ?></li>
+      <li>Exercice 2 Fa : <?= $level['Portee']['Ex2Fa']; ?></li>
+    </ul>
 
   <h2>Exercices Piano Virtuel - Niveau <?= $level['Piano'] ?></h2>
 
