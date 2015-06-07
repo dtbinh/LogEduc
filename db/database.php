@@ -154,7 +154,9 @@ function addUser($user) {
         ('.$user->getId().', 22, 0), 
         ('.$user->getId().', 23, 0), 
         ('.$user->getId().', 24, 0), 
-        ('.$user->getId().', 3, 0);';
+        ('.$user->getId().', 31, 0), 
+        ('.$user->getId().', 32, 0), 
+        ('.$user->getId().', 33, 0);';
         echo $sql;
         mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
         mysql_close($db);  
@@ -179,7 +181,8 @@ function getNews() {
 
 function getLevelByUser($user) {
     $db = connectDB();
-    $tmp = array();
+    $portee = array();
+    $piano = array();
 //echo '<pre>';var_dump($user);echo '</pre>'; 
 
     $sql = 'SELECT * FROM mif22_levelUserExercice WHERE id_user='.$user->getId();
@@ -190,27 +193,42 @@ function getLevelByUser($user) {
         if($data['id_exercice'] == 1){
             $strExo = "Instruments";
             $level[$strExo] = intval($data['level']);
-        } else if($data['id_exercice'] == 3){
+        } else if($data['id_exercice'] == 31 || $data['id_exercice'] == 32 || $data['id_exercice'] == 33){
+
+            switch($data['id_exercice']) {
+                case 31:
+                    $piano['Exo1'] = intval($data['level']);
+                break;
+                case 32:
+                    $piano['Exo2'] = intval($data['level']);
+                break;
+                case 33:
+                    $piano['Exo3'] = intval($data['level']);
+                break;
+            }  
+
             $strExo = "Piano";
             $level[$strExo] = intval($data['level']);
         } else {
             switch($data['id_exercice']) {
                 case 21:
-                    $tmp['Ex1Sol'] = intval($data['level']);
+                    $portee['Ex1Sol'] = intval($data['level']);
                 break;
                 case 22:
-                    $tmp['Ex2Sol'] = intval($data['level']);
+                    $portee['Ex2Sol'] = intval($data['level']);
                 break;
                 case 23:
-                    $tmp['Ex1Fa'] = intval($data['level']);
+                    $portee['Ex1Fa'] = intval($data['level']);
                 break;
                 case 24:
-                    $tmp['Ex2Fa'] = intval($data['level']);
+                    $portee['Ex2Fa'] = intval($data['level']);
                 break;
             }  
         } 
         $level['Portee'] = Array();
-        $level['Portee'] = $tmp;
+        $level['Portee'] = $portee;
+        $level['Piano'] = Array();
+        $level['Piano'] = $piano;
        
     }
 
