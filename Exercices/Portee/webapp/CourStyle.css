@@ -1,0 +1,157 @@
+#Menu .btn{
+
+    width: 100%;
+    height:200px;
+    
+}
+[class*="col-"]{
+	padding: 0;
+}
+.titre{
+	
+  text-align: center;
+  background-color:#1e90ff;
+  border :1px solid #808080;
+  border-radius: 6px;
+  
+}
+#textContainer{
+	height:550px;
+	overflow: scroll;
+}
+#poeme{
+	text-align : center;
+}
+#question{
+	backgroud-color : grey;
+}
+body {
+	background: white;
+}
+.caseImg{
+	width: 60px;
+	height: 60px;
+	border :1px solid #808080;
+}
+.imgNote{
+		width: 30px;
+		height: 30px;
+		margin : 15px;
+
+}
+.imageCentre{
+	
+	text-align:center;
+	float:none;
+}
+.ui-state-active{
+	opacity: .50;
+}
+.ui-state-hover{
+	
+}
+.droppable:hover{
+	cursor:crosshair;
+}
+.casePL{
+	width: 60px;
+    height:10px;
+     
+
+  background-image: url("ligne1.png");
+	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 100% 100%;
+
+  
+}
+.caseP{
+	width: 60px;
+    height:10px;
+      
+ 
+  background-image: url("caseVide.png");
+	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 100% 100%;
+
+
+  
+}
+.case{
+	width: 60px;
+    height:10px;
+      
+
+  background-image: url("caseVide.png");
+	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 100% 100%;
+
+
+  
+}
+#BulleText{
+	text-align : center;
+	
+	 vertical-align:middle;
+		width: 300px;
+    height:250px;
+	   background-image: url("BulleFond.jpeg");
+	   	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 325px 250px;
+}
+#TextContent{
+	
+	 
+	text-align : center;
+	 vertical-align:middle;
+	margin:10%;
+	width: 200px;
+    height:150px;
+    margin-left: 50px;
+   
+	  
+}
+#Titre{
+	text-align: center;
+}
+.fcasePL{
+	width: 60px;
+    height:10px;
+     
+
+  background-image: url("ligne1.png");
+	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 100% 100%;
+
+  
+}
+.fcaseP{
+	width: 60px;
+    height:10px;
+      
+ 
+  background-image: url("caseVide.png");
+	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 100% 100%;
+
+
+  
+}
+.fcase{
+	width: 60px;
+    height:10px;
+      
+
+  background-image: url("caseVide.png");
+	  background-repeat:no-repeat;
+	  background-position:center center;
+	  background-size: 100% 100%;
+
+
+  
+}
