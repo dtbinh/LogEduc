@@ -16,10 +16,33 @@ $level = getLevelByUser($user);
         <link rel="stylesheet" href="popup.css" type="text/css">
     </head>
 <body>
-<div class="row">
-<div class="col-sm-12 titre">
-	<H1 id="titreNiveau"><b>Retrouve les notes ! (Clé de Sol)</b></H1>
-</div>
+<div class="row titre">
+	<div class="col-sm-8 col-sm-offset-2">
+		    	<h2>Retrouve les notes en Clé de Sol !</h2>
+	</div>
+	<div class="col-sm-1">
+		<br/>
+			<header>
+		    <nav>
+		        <table>
+		            <tr>
+		            	<td>
+		                	<a href="/LogEduc/"><button class="btn btn-success">Menu</button></a>
+		                </td>
+		               <td><a href="/LogEduc/Exercices/Portee/webapp/menuExo.php"><button class="btn btn-primary">Exos</button></a>
+		                <td>
+		                
+		                    <form method="post" action="../../../Controller/Login_controller.php">
+		                    <input type="hidden" name="deconnexion" />
+		                    <input type="submit"class="btn btn-danger" value="Quitter" />
+		                    </form>
+		                </td>
+		            </tr>
+		        </table>
+		    </nav>
+		    </header>
+	</div>
+	
 </div>
 <div class = "row PersoPlugn">
 	<div class="col-sm-2 col-sm-offset-3" id="persoContainer">

@@ -26,7 +26,7 @@ h1, h2, h3, h4 {
 }
 #textContainer{
 	height:550px;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 #poeme{
 	text-align : center;

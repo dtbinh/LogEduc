@@ -1,3 +1,12 @@
+<?php 
+session_start();
+require_once('../../../db/database.php');
+spl_autoload_register('loadClass');
+//if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
+$news = getNews();
+$user = unserialize($_SESSION['user']);
+$level = getLevelByUser($user);
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -5,10 +14,30 @@
         <link rel="stylesheet" href="CourStyle.css" type="text/css">
     </head>
 <body>
-<div class="row">
-<div class="col-sm-12 titre">
-	<H1><b>Apprendre à lire les notes sur une portée</b></H1>
-</div>
+<div class="row titre">
+	<div class="col-sm-8 col-sm-offset-2">
+		    	<h2>Retrouve la note en Clé de Sol !</h2>
+	</div>
+	<div class="col-sm-1">
+		<br/>
+			<header>
+		    <nav>
+		        <table>
+		            <tr>
+		            	<td>
+		                	<a href="/LogEduc/"><button class="btn btn-success">Menu</button></a>
+		                </td>
+		               <td><a href="/LogEduc/Exercices/Portee/webapp/menuExo.php"><button class="btn btn-primary">Exos</button></a>
+		                <td>
+		               
+		                 
+		                </td>
+		            </tr>
+		        </table>
+		    </nav>
+		    </header>
+	</div>
+	
 </div>
 
 <div id="page">
@@ -21,6 +50,7 @@
 				<div class="col-sm-6" id="BulleText">
 					<div id="TextContent"><p><FONT color='blue' size='4'>Bonjour camarade, je suis Rémi Fasol !
 					Aujourd'hui nous allons apprendre la lecture des notes !</FONT></p>
+					<a href="/LogEduc/" onmouseover="this.style.cursor='pointer'"><- Menu principal</a><br/>
 					<a onmouseover="this.style.cursor='pointer'" onClick="sommaire()">suite -></a>
 					</div>
 				</div>

@@ -1,5 +1,5 @@
 <?php session_start();
-require_once('../db/database.php');
+require_once('../../../db/database.php');
 spl_autoload_register('loadClass');
 //if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
 $news = getNews();
@@ -11,10 +11,10 @@ $level = getLevelByUser($user);
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-<title>Accueil de la musique par les plantes</title>
+<title>La musique par les plantes</title>
 <meta charset="utf-8" />
-<link rel="stylesheet" href="../plugin/bootstrap/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="../css/style.css" type="text/css" />
+<link rel="stylesheet" href="../../../plugin/bootstrap/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="../../../css/style.css" type="text/css" />
 </head>
 
 <body id="main">
@@ -23,12 +23,12 @@ $level = getLevelByUser($user);
     <nav>
         <table>
             <tr>
-                <td><?php
-                    if($user->getType() == 0) echo '<a href="panelEnseignant.php"><button class="btn btn-success">Panel enseignant</button></a>';
-                    else echo '<a href="profil.php"><button class="btn btn-primary">Profil</button></a>';
-                ?></td>
                 <td>
-                    <form method="post" action="../Controller/Login_controller.php">
+                            <a href="/LogEduc/"><button class="btn btn-success">Menu</button></a>
+                        </td>
+                <td>
+                <td>
+                    <form method="post" action="../../Controller/Login_controller.php">
                     <input type="hidden" name="deconnexion" />
                     <input type="submit"class="btn btn-danger" value="Quitter" />
                     </form>
@@ -36,42 +36,33 @@ $level = getLevelByUser($user);
             </tr>
         </table>
     </nav>
-    <h2>Bonjour <?= $_SESSION['username']; ?></h2>
+    <h2>Les exercices de la portée</h2>
 </header>
 
-<section id="newsDuJour">
-<h3>News du jour</h3>
-<p><?php echo $news[rand(1, count($news))]; ?></p>
-</section>
 
 <section id="panelExercices">
-    <table><tr>
+    <table>
+    <tr>
         <td class="tdPanelLvl1">
-            <button class="btnInstru buttonPanel btn btn-success">Instruments<br>Niveau <?= $level['Instruments'] ?></button>
-                <table class="subTableExercice tableInstru"><tr>
-                    <td><a href="coursInstruments.php"><button class="btn btn-success">Cours</button></a></td>
-                    <td><a href="../Exercices/Instruments/quiz.php"><button class="btn btn-success">Exercices</button></a></td>
-                </tr></table>
+           <a href="/LogEduc/Exercices/Portee/webapp/porteeExGen1.php"> <button class="btnInstru buttonPanel btn btn-success">Exercice 1 <br/> Clé de Sol<br>Niveau <?= $level['Portee']['Ex1Sol'] ?></button> </a>
+                
         </td>
+           <td class="tdPanelLvl1">
+           <a href="/LogEduc/Exercices/Portee/webapp/porteeExGen2.php"> <button class="btnPortee buttonPanel btn btn-primary">Exercice 2 <br/> Clé de Sol<br>Niveau <?= $level['Portee']['Ex2Sol'] ?></button> </a>
+                
+        </td>
+    </tr>
+    <tr>
         <td class="tdPanelLvl1">
-            <button class="btnPortee buttonPanel btn btn-primary">Portée<br>Niveau <?= $level['Portee']['Ex1Sol'] ?></button>
-                <table class="subTableExercice tablePortee"><tr>
-                    <td><a href="../Exercices/Portee/webapp/CourPortee.html"><button class="btn btn-primary">Cours</button></a></td>
-                    <td><a href="../Exercices/Portee/webapp/menuExo.php"><button class="btn btn-primary">Exercices</button></a></td>
-                </tr></table>
+           <a href="/LogEduc/Exercices/Portee/webapp/porteeFaExGen1.php"> <button class="btnPiano buttonPanel btn btn-danger">Exercice 1 <br/> Clé de Fa<br>Niveau <?= $level['Portee']['Ex1Fa'] ?></button> </a>
+                
         </td>
-        </tr><tr>
-        <td class="tdPanelLvl1">
-            <button class="btnPiano buttonPanel btn btn-danger">Piano<br> Niveau <?= $level['Piano'] ?></button>
-                <table class="subTableExercice tablePiano"><tr>
-                    <td><button class="btn btn-danger">Cours</button></td>
-                    <td><a href="../Exercices/Piano"><button class="btn btn-danger">Exercices</button></a></td>
-                </tr></table>
+           <td class="tdPanelLvl1">
+           <a href="/LogEduc/Exercices/Portee/webapp/porteeFaExGen2.php"> <button class="buttonPanel buttonPanel btn btn-warning">Exercice 2 <br/> Clé de Fa<br>Niveau <?= $level['Portee']['Ex2Fa'] ?></button> </a>
+                
         </td>
-        <td class="tdPanelLvl1">
-            <button class="buttonPanel btn btn-warning disabled">En construction...</button>
-        </td>
-    </tr></table>
+    </tr>
+        
 
 </section>
 
