@@ -1,148 +1,6 @@
 /*
-* Piano Keyboard 
-* Author: Luiz Felipe Tartarotti Fialho
-* @LFeh / luizfelipe.tf.13@gmail.com
-* http://www.felipefialho.com/
+* Piano Keyboard
 */
-* {
-  box-sizing: border-box;
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-  border: 0;
-  -ms-interpolation-mode: bicubic;
-}
-@font-face {
-  font-family: 'piano-keyboard';
-  src: url('icons/piano-keyboard.eot?nfc6q9');
-  src: url('icons/piano-keyboard.eot?#iefixnfc6q9') format('embedded-opentype'), url('icons/piano-keyboard.woff?nfc6q9') format('woff'), url('icons/piano-keyboard.ttf?nfc6q9') format('truetype'), url('icons/piano-keyboard.svg?nfc6q9#piano-keyboard') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-[class^="icon-"],
-[class*=" icon-"] {
-  font-family: 'piano-keyboard';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-facebook:before {
-  content: "\e600";
-}
-.icon-linkedin:before {
-  content: "\e601";
-}
-.icon-twitter:before {
-  content: "\e602";
-}
-.icon-github:before {
-  content: "\e603";
-}
-body {
-  color: #222;
-  background: #fff;
-  font-size: 18px;
-  line-height: 24px;
-  font-family: helvetica, arial;
-}
-a {
-  color: #555;
-  text-decoration: none;
-}
-a:hover {
-  color: #999;
-}
-.hidden {
-  visibility: hidden;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: normal;
-}
-h1 {
-  font-size: 70px;
-  margin-top: 20px;
-  line-height: 80px;
-}
-h2 {
-  color: #777;
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-h3 {
-  color: #555;
-  font-size: 20px;
-  margin: 20px 0 10px;
-}
-p {
-  margin-bottom: 15px;
-}
-.wrap {
-  position: relative;
-}
-.container {
-  margin: 0 auto;
-  padding: 20px;
-  width: 980px;
-}
-hr {
-  border-top: 1px solid #ddd;
-  margin: 20px 0;
-}
-.fork {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 10%;
-}
-.share {
-  height: 20px;
-}
-.social-media {
-  list-style: none;
-  margin: 0;
-}
-.social-media li {
-  display: inline-block;
-  margin: 0 2px;
-}
-.social-media a {
-  transition: color .1s linear;
-  color: #222;
-  font-size: 20px;
-}
-.social-media a:hover {
-  color: #777;
-}
-.comments {
-  font-size: 12px;
-}
-@media (max-width: 767px) {
-  .container {
-    width: auto;
-  }
-  h1 {
-    font-size: 50px;
-  }
-  .fork {
-    width: 30%;
-  }
-}
 .piano {
   background: -webkit-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
   background: -moz-linear-gradient(-65deg, #000000, #222222, #000000, #666666, #222222 75%);
@@ -178,7 +36,10 @@ hr {
 }
 .key .white-key:active,
 .key .white-key.active {
-  box-shadow: inset 0 1px 0px #ffffff, inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px 0px 0px #ffffff, 0 4px 3px rgba(0, 0, 0, 0.7), inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px -1px 15px #000000, -3px 4px 6px rgba(0, 0, 0, 0.5);
+  background: -webkit-linear-gradient(-30deg, #ffff00, #ffffff);
+  background: -moz-linear-gradient(-30deg, #ffff00, #ffffff);
+  background: -o-linear-gradient(-30deg, #ffff00, #ffffff);
+  background: linear-gradient(-30deg, #ffff00, #ffffff);
   position: relative;
   top: -5px;
   height: 295px;
@@ -213,8 +74,19 @@ hr {
 }
 .key .black-key:active,
 .key .black-key.active {
+  background: -webkit-linear-gradient(-20deg, #222222, #9400d3, #222222);
+  background: -moz-linear-gradient(-20deg, #222222, #9400d3, #222222);
+  background: -o-linear-gradient(-20deg, #222222, #9400d3, #222222);
+  background: linear-gradient(-20deg, #222222, #9400d3, #222222);
   border-bottom-width: 3px;
   top: 0;
+}
+.enonce {
+  background-color: greenyellow;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .container {
   padding-right: 15px;
@@ -223,24 +95,69 @@ hr {
   margin-left: auto;
 }
 [class*="col-xs-4"],
+[class*="col-xs-3"],
 footer {
   background-color: orange;
   border: 2px solid black;
   border-radius: 6px;
-  line-height: 40px;
+  line-height: 30px;
+  font-size: large;
   text-align: center;
+  vertical-align: middle;
+  height: 90px;
 }
-[class*="col-xs-4"]:active,
-footer:active,
+[class*="col-xs-4"].white-key,
+[class*="col-xs-3"].white-key,
+footer.white-key {
+  background-color: orangered;
+}
 [class*="col-xs-4"].fini,
+[class*="col-xs-3"].fini,
 footer.fini {
   background-color: #808080;
 }
-[class*="col-xs-4"]:active,
-footer:active,
 [class*="col-xs-4"].next,
+[class*="col-xs-3"].next,
 footer.next {
   background-color: darkviolet;
+}
+[class*="col-xs-4"]:active,
+[class*="col-xs-3"]:active,
+footer:active,
+[class*="col-xs-4"].active,
+[class*="col-xs-3"].active,
+footer.active {
+  border: 4px solid #808080;
+  line-height: 36px;
+  margin-top: -2px;
+}
+[class*="col-xs-4"]:hover,
+[class*="col-xs-3"]:hover,
+footer:hover,
+[class*="col-xs-4"].hover,
+[class*="col-xs-3"].hover,
+footer.hover {
+  background-color: darkcyan;
+  font-weight: bold;
+}
+[class*="col-xs-6"],
+footer {
+  background-color: orange;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 60px;
+  font-size: xx-large;
+  text-align: center;
+  vertical-align: middle;
+  height: 64px;
+  width: 30%;
+  margin-left: 25%;
+}
+[class*="bonusTemps"] {
+  font-size: 400%;
+  color: #0000cc;
+  text-align: center;
+  position: relative;
 }
 /*
 [data-note*="1C"] {

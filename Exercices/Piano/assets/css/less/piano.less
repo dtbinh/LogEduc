@@ -39,7 +39,11 @@
     
     &:active,
     &.active{
-      box-shadow: inset 0 1px 0px rgba(255,255,255, 1),inset 0 -1px 0px rgba(255,255,255, 1),inset 1px 0px 0px rgba(255,255,255, 1),inset -1px 0px 0px rgba(255,255,255, 1),0 4px 3px rgba(0,0,0,0.7),inset 0 -1px 0px rgba(255,255,255, 1),inset 1px 0px 0px rgba(255,255,255, 1),inset -1px -1px 15px rgba(0,0,0, 1), -3px 4px 6px rgba(0,0,0, 0.5);
+      background: -webkit-linear-gradient(-30deg, #ffff00, #fff);
+      background: -moz-linear-gradient(-30deg, #ffff00, #fff);
+      background: -o-linear-gradient(-30deg, #ffff00, #fff);
+      background: linear-gradient(-30deg, #ffff00, #fff);
+      //box-shadow: inset 0 1px 0px #ffff00,inset 0 -1px 0px #ffff00,inset 1px 0px 0px #ffff00,inset -1px 0px 0px #ffff00,0 4px 3px yellowgreen,inset 0 -1px 0px #ffff00,inset 1px 0px 0px #ffff00,inset -1px -1px 15px yellowgreen, -3px 4px 6px yellowgreen;
       position:relative;
       top: -5px;
       height: 295px;
@@ -80,6 +84,10 @@
     
     &:active,
     &.active{
+      background: -webkit-linear-gradient(-20deg,#222,darkviolet,#222);
+      background: -moz-linear-gradient(-20deg,#222,darkviolet,#222);
+      background: -o-linear-gradient(-20deg,#222,darkviolet,#222);
+      background: linear-gradient(-20deg,#222,darkviolet,#222);
       border-bottom-width: 3px;
       top: 0;
     }
@@ -90,6 +98,14 @@
 
 // Subject
 // --------------------------------------------------
+.enonce {
+  background-color: greenyellow;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 .container {
   padding-right: 15px;
   padding-left: 15px;
@@ -97,23 +113,64 @@
   margin-left: auto;
 }
 
-[class*="col-xs-4"], footer {
+[class*="col-xs-4"], [class*="col-xs-3"], footer {
   background-color: orange;
   border: 2px solid black;
   border-radius: 6px;
-  line-height: 40px;
+  line-height: 30px;
+  font-size: large;
   text-align: center;
+  vertical-align: middle;
+  height: 90px;
 
-  &:active,
+  &.white-key {
+    background-color: orangered;
+  }
+
   &.fini{
     background-color: #808080;
   }
 
-  &:active,
   &.next{
     background-color: darkviolet;
   }
+
+  &:active,
+  &.active{
+    border: 4px solid #808080;
+    line-height: 36px;
+    margin-top: -2px;
+  }
+
+  &:hover,
+  &.hover /* Apparence au survol des liens */
+  {
+    background-color: darkcyan;
+    font-weight: bold;
+  }
 }
+
+[class*="col-xs-6"], footer {
+  background-color: orange;
+  border: 2px solid black;
+  border-radius: 6px;
+  line-height: 60px;
+  font-size: xx-large;
+  text-align: center;
+  vertical-align: middle;
+  height: 64px;
+  width: 30%;
+  margin-left: 25%;
+}
+
+[class*="bonusTemps"] {
+  font-size: 400%;
+  color: #0000cc;
+  text-align: center;
+  position : relative;
+
+}
+
 
 /*
 [data-note*="1C"] {
