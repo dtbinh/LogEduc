@@ -15,10 +15,34 @@
   border-radius: 6px;
   
 }
+#textContainer{
+	height:250px;
+	overflow: scroll;
+}
 body {
 	background: white;
 }
+.caseImg{
+	width: 60px;
+	height: 60px;
+	border :1px solid #808080;
+}
+.imgNote{
+		width: 30px;
+		height: 30px;
+		margin : 15px;
 
+}
+
+.ui-state-active{
+	opacity: .50;
+}
+.ui-state-hover{
+	
+}
+.droppable:hover{
+	cursor:crosshair;
+}
 .casePL{
 	width: 60px;
     height:10px;

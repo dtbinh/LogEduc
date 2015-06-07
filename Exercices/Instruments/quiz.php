@@ -1,3 +1,11 @@
+<?php session_start();
+require_once('../../db/database.php');
+spl_autoload_register('loadClass');
+//if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
+$user = unserialize($_SESSION['user']);
+$level = getLevelByUser($user); 
+?>
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -6,7 +14,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Quiz - Let's Go</title>
+        <title>Exercice sur les instruments</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <!-- inclusion du style CSS de base -->
@@ -99,7 +107,7 @@ and open the template in the editor.
               +"<h1>"+cpt+"\/"+questions.length+"</h1>"+
               "<p>Tu as "+cpt+" "+answer+" sur "+questions.length+"</p>"+
               "<p><a class=\"btn btn-primary btn-lg\" href=\"/LogEduc/\"  role=\"button\">Revenir à l\'accueil</a></p>"+
-          "<p><a class=\"btn btn-primary btn-lg\" href=\"/LogEduc/Exercices/Instruments/quiz.html\"  role=\"button\">Recommencer</a></p>"+
+          "<p><a class=\"btn btn-primary btn-lg\" href=\"/LogEduc/Exercices/Instruments/quiz.php\"  role=\"button\">Recommencer</a></p>"+
           "</div>"+
           "</div>"
 
@@ -109,8 +117,8 @@ and open the template in the editor.
 
 
 
-          //test.innerHTML += '<div><a href="http://localhost:3000/" class="btn btn-info bouton col-xs-6 col-sm-3" role="button">Revenir à l\'accueil</a></div>';
-          //test.innerHTML += '<div><a href="http://localhost:3000/quiz.html" class="btn btn-info bouton col-xs-6 col-sm-3" role="button">Recommencer</a></div>';
+//          test.innerHTML += '<div><a href="http://localhost:3000/" class="btn btn-info bouton col-xs-6 col-sm-3" role="button">Revenir à l\'accueil</a></div>';
+  //        test.innerHTML += '<div><a href="http://localhost:3000/quiz.html" class="btn btn-info bouton col-xs-6 col-sm-3" role="button">Recommencer</a></div>';
 
           //test.innerHTML += "<button onclick='go()' type='submit' class='btn btn-primary  bouton'>Question Suivante</button>";
 
@@ -118,7 +126,7 @@ and open the template in the editor.
         }
         question = questions[pos][0];
 
-        _("test_status").innerHTML = "<h4>Question "+(pos+1)+" sur "+questions.length+"</h4><h1>"+question+"</h1>";
+        _("test_status").innerHTML = "<h2>Niveau "+ <?= $level['Instruments'] ?> +"</h2><h4>Question "+(pos+1)+" sur "+questions.length+"</h4><h1>"+question+"</h1>";
 
         chA = questions[pos][1];
         chB = questions[pos][2];

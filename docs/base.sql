@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `mif22_levelUserExercice` (
 --
 
 INSERT INTO `mif22_levelUserExercice` (`id_user`, `id_exercice`, `level`) VALUES
-(1, 1, 2),
-(1, 2, 7),
+(1, 1, 1),
+(1, 2, 2),
 (1, 3, 3),
 (2, 1, 0),
 (2, 2, 0),

@@ -1,9 +1,11 @@
-text = "Peux-tu me donner le nom de la note que tu viens de placer ?";
+text = "<FONT color='blue' size='4'> Peux-tu me donner le nom de la note que tu viens de placer ? <br/></FONT>";
+text+= '<br/><br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="sommaire()"> <- Retour au sommaire</a>';
+text+= '<br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="cleFa()">La clé de Fa -></a>'; 
 reponse = "";
 function genererPortee(nbLigne, nbColonne)
 {
 	nbLigne = 20;
-	nbColonne = 20;
+	nbColonne = 8;
 	/* Pour une portée de 20 lignes
 	 * 0 _________________________ do
 	 * 1                           si
@@ -98,7 +100,7 @@ $('body').on("click","td.case", function(event){
 
 	if(check == 'no')
 	{
-		text = "Peux-tu me donner le nom de la note que tu viens de placer ? <br/><a onclick='DonneReponse()'>reponse</a>";
+		text = "<FONT color='blue' size='4' >Peux-tu me donner le nom de la note que tu viens de placer ?<FONT><br/> <br/><a onmouseover=\"this.style.cursor='pointer'\" onclick='DonneReponse()'>Réponse</a>";
 		changerMessage(text);
 		reponse = note;
 		
@@ -107,7 +109,9 @@ $('body').on("click","td.case", function(event){
 	}
 	else
 	{	
-		text = "hmm, place une autre note.";
+		text = "<FONT color='blue' size='4' >Hihihi, place une autre note.</FONT>";
+		text+= '<br/><br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="sommaire()"> <- Retour au sommaire</a>';
+		text+= '<br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="cleFa()">La clé de Fa -></a>'; 
 		changerMessage(text);
 		//alert("heu");
 		$(this).css("background-image","url('caseVide.png')");
@@ -123,7 +127,7 @@ $('body').on("click","td.casePL",function(event){
 
 	if(check == 'no')
 	{
-		text = "Peux-tu me donner le nom de la note que tu viens de placer ? <br/><a onclick='DonneReponse()'>reponse</a>";
+		text = "<FONT color='blue' size='4' >Peux-tu me donner le nom de la note que tu viens de placer ?<FONT><br/> <br/><a onmouseover=\"this.style.cursor='pointer'\" onclick='DonneReponse()'>Réponse</a>";
 		changerMessage(text);
 		reponse = note;
 		
@@ -133,7 +137,9 @@ $('body').on("click","td.casePL",function(event){
 	else
 	{
 		//alert("heu");
-		text = "hmm, place une autre note.";
+		text = "<FONT color='blue' size='4' >Hmm, place une autre note.</FONT>";
+		text+= '<br/><br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="sommaire()"> <- Retour au sommaire</a>';
+		text+= '<br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="cleFa()">La clé de Fa -></a>'; 
 		changerMessage(text);
 		$(this).css("background-image","url('ligne1.png')");
 		$(this).attr('checkN',"no");
@@ -150,16 +156,17 @@ $('body').on("click","td.caseP", function(event){
 	if(check == 'no')
 	{
 		reponse = note;
-		text = "Peux-tu me donner le nom de la note que tu viens de placer ? <br/><a onclick='DonneReponse()'>reponse</a>";
-		changerMessage(text);
-		
+		text = "<FONT color='blue' size='4' >Peux-tu me donner le nom de la note que tu viens de placer ?<FONT><br/> <br/><a onmouseover=\"this.style.cursor='pointer'\" onclick='DonneReponse()'>Réponse</a>";
+		changerMessage(text); 
 		$(this).css("background-image","url('note.png')");
 		$(this).attr('checkN',"yes");
 	}
 	else
 	{
 		//alert("heu");
-		text = "hmm, place une autre note.";
+		text = "<FONT color='blue' size='4' >Aller, place une autre note.</FONT>";
+		text+= '<br/><br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="sommaire()"> <- Retour au sommaire</a>';
+		text+= '<br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="cleFa()">La clé de Fa -></a>'; 
 		changerMessage(text);
 		$(this).css("background-image","url('caseVide.png')");
 		$(this).attr('checkN',"no");
@@ -234,7 +241,9 @@ $('body').on("mouseleave","td.caseP", function(event){
 
 function DonneReponse()
 {
-	var rep = "la réponse est <b>"+reponse+ "</b> <br/> Continue, place une autre note ! ";
+	var rep = "<FONT color='blue' size='4'> La réponse était <b>"+reponse+ "</b> <br/> Continue, place une autre note ! </FONT>";
+	rep+= '<br/><br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="sommaire()"> <- Retour au sommaire</a>';
+	rep+= '<br/><a onmouseover="this.style.cursor=\'pointer\'" onClick="cleFa()">La clé de Fa -></a>'; 
 	changerMessage(rep);
 }
 

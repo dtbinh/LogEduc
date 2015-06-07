@@ -9,7 +9,7 @@
 <body>
 <div class="row">
 <div class="col-sm-12 titre">
-	<H1 id="titreNiveau"><b>Retrouve la note !</b></H1>
+	<H1 id="titreNiveau"><b>Retrouve la note ! (Clé de Sol)</b></H1>
 </div>
 </div>
 <div class = "row PersoPlugn">
@@ -17,15 +17,11 @@
 		<img id="perso" height="250" width = "250" src="Perso.jpeg"/>
 	</div>
 	<div class="col-sm-6" id="BulleText">
-	<div id="TextContent"><p>OK, maintenant place à un petit exercice ! <br/> Clique sur instructions pour voir les consignes et sur Go ! lorsque tu es prêt.<br/><a href="#?w=500" rel="instruction" class="poplight">Instruction</a><br/><a href='#' onclick="choixNiveau()">Go !</a></p></div>
+	<div id="TextContent"><p>OK, maintenant place à un petit exercice ! <br/> Clique sur instructions pour voir les consignes et sur Go ! losque tu es prêt.<br/><a href="#?w=500" rel="instruction" class="poplight">Instruction</a><br/><a onmouseover="this.style.cursor='pointer'" onclick="choixNiveau()">Go !</a></p></div>
 	
 	</div>
 </div>
-<div class="row">
-	<div class = "col-sm-10 col-sm-offset-1">
-		<a href='#' onclick='reInitPortee()'>Effacer la portée</a>
-	</div>
-</div>
+
 <div class="row">
 	
 	<div class = "col-sm-10 col-sm-offset-1" id=porteeContainer>
@@ -33,8 +29,16 @@
 		</table>	
 	</div>
 </div>
-
-
+<div class="row">
+	<div class = "col-sm-10 col-sm-offset-1">
+		<a onmouseover="this.style.cursor='pointer'" onclick='reInitPortee()'>Effacer la portée</a>
+	</div>
+</div>
+<div class="row">
+	<div class = "col-sm-10 col-sm-offset-1">
+		<a href="CourPortee.html" onmouseover="this.style.cursor='pointer'">Retour à la leçon</a>
+	</div>
+</div>
 <div id="instruction" class="popup_block">
 	<h2>Instruction</h2>
 	<p> Le but de cet exercice est de replacer sur la portée la ou les notes dont Rémi va te donner le nom </p>

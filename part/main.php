@@ -47,17 +47,17 @@ $level = getLevelByUser($user);
 <section id="panelExercices">
     <table><tr>
         <td class="tdPanelLvl1">
-            <button class="btnInstru buttonPanel btn btn-primary">Instruments<br>Niveau <?= $level['Instruments'] ?></button>
+            <button class="btnInstru buttonPanel btn btn-success">Instruments<br>Niveau <?= $level['Instruments'] ?></button>
                 <table class="subTableExercice tableInstru"><tr>
-                    <td><button class="btn btn-primary">Cours</button></td>
-                    <td><a href="../Exercices/Instruments/quiz.php"><button class="btn btn-primary">Exercices</button></a></td>
+                    <td><a href="coursInstruments.php"><button class="btn btn-success">Cours</button></a></td>
+                    <td><a href="../Exercices/Instruments/quiz.php"><button class="btn btn-success">Exercices</button></a></td>
                 </tr></table>
         </td>
         <td class="tdPanelLvl1">
-            <button class="btnPortee buttonPanel btn btn-success">Portée<br>Niveau <?= $level['Portee'] ?></button>
+            <button class="btnPortee buttonPanel btn btn-primary">Portée<br>Niveau <?= $level['Portee'] ?></button>
                 <table class="subTableExercice tablePortee"><tr>
-                    <td><button class="btn btn-success">Cours</button></td>
-                    <td><a href="../Exercices/Portee/webapp/porteeExGen<?=$user->getLevelPortee()?>.html"><button class="btn btn-success">Exercices</button></a></td>
+                    <td><a href="../Exercices/Portee/webapp/CourPortee.html"><button class="btn btn-primary">Cours</button></a></td>
+                    <td><a href="../Exercices/Portee/webapp/porteeExGen<?=$user->getLevelPortee()?>.html"><button class="btn btn-primary">Exercices</button></a></td>
                 </tr></table>
         </td>
         </tr><tr>
