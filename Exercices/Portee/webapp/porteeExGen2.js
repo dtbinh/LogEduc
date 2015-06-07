@@ -11,8 +11,9 @@ tempsAffichage = 5000;
 //L'indice auquel l'utilisateur en est
 indiceProgression = 0;
 // Le niveau du joueur
-niveauJoueur = 1;
-
+//niveauJoueur = 1;
+niveauJoueur = $('#niveauEtu').html();
+niveauJoueur = parseInt(niveauJoueur);
 //Variables utiles à l'exo
 nbNotePlacee = 0;
 nbFauteNiveau1 = 0;
@@ -22,6 +23,22 @@ nbNote = 0;
 indices = new Array();
 indexIndice = 0;
 
+
+
+
+function levelUp()
+{
+	
+	var exo ="exo="+ 22;
+	 $.ajax({
+        type: 'GET',
+          url: "/LogEduc/Exercices/Portee/webapp/levelup.php", 
+           data: exo,
+            success: function (data) {
+                  alert("Félicitaion, tu as augmenté d'un niveau !");          
+            }
+        });
+}
 function aleatoire(min, max) {
     return (Math.floor((max-min)*Math.random())+min);
 }
@@ -156,9 +173,19 @@ function reInitPortee(){
 
 function finJeu()
 {
-	var text = "Tu as fais "+nbFaute+" fautes";
-	$("#nbFaute").append(text);
-	affichePopuVictoireNiv1();
+	function finJeu()
+{
+	if(nbFaute == 0)
+	{
+		var text = "<FONT color='green' size='3' >Hey pas mal ! Tu as réussi du premier coup ! </FONT>";
+		levelUp();
+	}
+	else
+	{
+		var text = "<FONT color='green' size='3' > Bravo ! Tu as fini l'exercice en </FONT><FONT color='blue' size='3'>"+(nbFaute+1)+" </FONT><FONT color='green' size='3'> essais ! <br/> Tu as fais </FONT><FONT color='blue' size='3'>"+nbFauteTotale+" </FONT><FONT color='green' size='3'>fautes au total </FONT>" ;
+	}
+	changerMessage(text);
+}
 }
 
 
@@ -605,6 +632,7 @@ function finJeu()
 	if(nbFaute == 0)
 	{
 		var text = "<FONT color='green' size='3' >Hey pas mal ! Tu as réussi du premier coup ! </FONT>";
+		levelUp();
 	}
 	else
 	{

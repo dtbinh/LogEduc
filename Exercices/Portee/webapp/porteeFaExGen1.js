@@ -10,8 +10,8 @@ tempsAffichage = 3000;
 //Infos sur l'utilisateur a remplir en récupérant de la base !
 //L'indice auquel l'utilisateur en est
 indiceProgression = 0;
-niveauJoueur = 1;
-
+niveauJoueur = $('#niveauEtu').html();
+niveauJoueur = parseInt(niveauJoueur);
 //Les variables pour l'exercice niveau 2
 //Ici on a deux notes, on ajoute donc les variables necessaire
 noteC1 = -1;
@@ -32,7 +32,19 @@ nbClickE3 = 0;
 nbLigneClickE31 = -1;
 nbLigneClickE32 = -1;
 
-
+function levelUp()
+{
+	
+	var exo ="exo="+ 23;
+	 $.ajax({
+        type: 'GET',
+          url: "/LogEduc/Exercices/Portee/webapp/levelup.php", 
+           data: exo,
+            success: function (data) {
+                  alert("Félicitaion, tu as augmenté d'un niveau !");          
+            }
+        });
+}
 function recupInfoBase(){
 	//Ici la requete sql pour récupérer les infos de la base. A faire avant toute chose !
 }
@@ -553,6 +565,11 @@ function finJeu()
 	var text = "Tu as fais "+nbFaute+" fautes";
 	$("#nbFaute").append(text);
 	affichePopuVictoireNiv1();
+
+	if(nbFaute == 0)
+	{
+		levelUp();
+	}
 }
 
 function verifierNoteClickNiveau1(note)

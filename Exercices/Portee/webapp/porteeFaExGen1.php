@@ -1,3 +1,13 @@
+<?php 
+session_start();
+require_once('../../../db/database.php');
+spl_autoload_register('loadClass');
+//if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
+$news = getNews();
+$user = unserialize($_SESSION['user']);
+$level = getLevelByUser($user);
+?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -9,7 +19,7 @@
 <body>
 <div class="row">
 <div class="col-sm-12 titre">
-	<H1 id="titreNiveau"><b>Retrouve la note ! (Clé de Sol)</b></H1>
+	<H1 id="titreNiveau"><b>Retrouve la note ! (Clé de Fa)</b></H1>
 </div>
 </div>
 <div class = "row PersoPlugn">
@@ -17,7 +27,7 @@
 		<img id="perso" height="250" width = "250" src="Perso.jpeg"/>
 	</div>
 	<div class="col-sm-6" id="BulleText">
-	<div id="TextContent"><p>OK, maintenant place à un petit exercice ! <br/> Clique sur instructions pour voir les consignes et sur Go ! losque tu es prêt.<br/><a href="#?w=500" rel="instruction" class="poplight">Instruction</a><br/><a onmouseover="this.style.cursor='pointer'" onclick="choixNiveau()">Go !</a></p></div>
+	<div id="TextContent"><p>OK, maintenant place à un petit exercice ! <br/> Clique sur instructions pour voir les consignes et sur Go ! losque tu es prêt.<br/><br/><a href="#?w=500" rel="instruction" class="poplight">Instruction</a><br/><a onmouseover="this.style.cursor='pointer'" onclick="choixNiveau()">Go !</a></p></div>
 	
 	</div>
 </div>
@@ -39,6 +49,7 @@
 		<a href="CourPortee.html" onmouseover="this.style.cursor='pointer'">Retour à la leçon</a>
 	</div>
 </div>
+
 <div id="instruction" class="popup_block">
 	<h2>Instruction</h2>
 	<p> Le but de cet exercice est de replacer sur la portée la ou les notes dont Rémi va te donner le nom </p>
@@ -47,13 +58,15 @@
 	<h2>Bravo, tu as finis l'exercice !</h2>
 	<p id=nbFaute></p>
 </div>
-
+<div id="niveauEtu">
+	<?php echo $level['Portee']['Ex1Fa']; ?>
+</div>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="./../resources/jquery-ui-1.11.4/jquery-ui.js"> </script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="popupExGen1.js"></script>	
 <script src="perso.js"></script>
-<script src="porteeExGen1.js"></script>
+<script src="porteeFaExGen1.js"></script>
 
 
 <script>

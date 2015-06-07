@@ -10,7 +10,50 @@ tempsAffichage = 3000;
 //Infos sur l'utilisateur a remplir en récupérant de la base !
 //L'indice auquel l'utilisateur en est
 indiceProgression = 0;
-niveauJoueur = 1;
+//Pour le nombre de fautes sur les notes
+poidNote = new Array();
+poidNote.push(100);
+poidNote.push(1);
+poidNote.push(1);
+poidNote.push(1);
+poidNote.push(1);
+poidNote.push(1);
+poidNote.push(1);
+
+
+
+
+function levelUp()
+{
+	
+	var exo ="exo="+ 21;
+	 $.ajax({
+        type: 'GET',
+          url: "/LogEduc/Exercices/Portee/webapp/levelup.php", 
+           data: exo,
+            success: function (data) {
+                  alert("Félicitaion, tu as augmenté d'un niveau !");          
+            }
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+niveauJoueur = $('#niveauEtu').html();
+//niveauJoueur+= 1.340; // a enlever
+
+niveauJoueur = parseInt(niveauJoueur); // On récupère la partie entière du niveau
 
 //Les variables pour l'exercice niveau 2
 //Ici on a deux notes, on ajoute donc les variables necessaire
@@ -56,7 +99,8 @@ function choixNiveau(){
 		genereExerciceNiveau3();
 		break;
 	}
-	
+	if(niveauJoueur > 3)
+		genereExerciceNiveau3();
 }
 
 
@@ -404,6 +448,7 @@ function genereExerciceNiveau1()
 			{
 				var intNote = aleatoire(1, 7);
 			}
+	
 			note2 = note1;
 			note1 = intNote;
 			
@@ -553,6 +598,10 @@ function finJeu()
 	var text = "Tu as fais "+nbFaute+" fautes";
 	$("#nbFaute").append(text);
 	affichePopuVictoireNiv1();
+	if(nbFaute == 0)
+	{
+		levelUp();
+	}
 }
 
 function verifierNoteClickNiveau1(note)
@@ -673,7 +722,52 @@ function ajoutMouseOverLeave()
 }
 
 function aleatoire(min, max) {
-    return (Math.floor((max-min)*Math.random())+min);
+
+	var nbtotal = 0;
+	for(var i=0; i<poidNote.length; i++)
+	{
+		nbtotal+=poidNote[i];
+	}
+	var dof = poidNote[0];
+	var ref = poidNote[1] + dof;
+	var mif = poidNote[2] + ref;
+	var faf = poidNote[3]+ faf;
+	var solf = poidNote[4]+ solf;
+	var laf = poidNote[5]+ laf;
+	var sif = poidNote[6]+ sif;
+	//On genere l'alea entre 0 et nbTotal
+	var alea1 = Math.floor((nbtotal-0)*Math.random())+0;
+
+	if(alea1 <= dof)
+	{
+		return 1;
+	}
+	else if(alea1 <= ref)
+	{
+		return 2;
+	}
+	else if(alea1 <= mif)
+	{
+		return 3;
+	}
+	else if(alea1 <= faf)
+	{
+		return 4;
+	}
+	else if(alea1 <= solf)
+	{
+		return 5;
+	}
+	else if(alea1 <= laf)
+	{
+		return 6;
+	}
+	else if(alea1 <= sif)
+	{
+		return 7;
+	}
+	return 1;
+   //	 return (Math.floor((max-min)*Math.random())+min);
 };
 
 function genereExerciceNiveau2()
@@ -1375,3 +1469,4 @@ function verifierNoteClickNiveau3(note1,note2,note3)
 		}
 	}
 }
+

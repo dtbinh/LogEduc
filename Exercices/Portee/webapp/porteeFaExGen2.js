@@ -11,7 +11,8 @@ tempsAffichage = 5000;
 //L'indice auquel l'utilisateur en est
 indiceProgression = 0;
 // Le niveau du joueur
-niveauJoueur = 1;
+niveauJoueur = $('#niveauEtu').html();
+niveauJoueur = parseInt(niveauJoueur);
 
 //Variables utiles à l'exo
 nbNotePlacee = 0;
@@ -22,7 +23,19 @@ nbNote = 0;
 indices = new Array();
 indexIndice = 0;
 
-
+function levelUp()
+{
+	
+	var exo ="exo="+ 24;
+	 $.ajax({
+        type: 'GET',
+          url: "/LogEduc/Exercices/Portee/webapp/levelup.php", 
+           data: exo,
+            success: function (data) {
+                  alert("Félicitaion, tu as augmenté d'un niveau !");          
+            }
+        });
+}
 function aleatoire(min, max) {
     return (Math.floor((max-min)*Math.random())+min);
 }
@@ -605,6 +618,7 @@ function finJeu()
 	if(nbFaute == 0)
 	{
 		var text = "<FONT color='green' size='3' >Hey pas mal ! Tu as réussi du premier coup ! </FONT>";
+		levelUp();
 	}
 	else
 	{

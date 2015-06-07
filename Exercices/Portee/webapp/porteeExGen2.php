@@ -1,3 +1,13 @@
+<?php 
+session_start();
+require_once('../../../db/database.php');
+spl_autoload_register('loadClass');
+//if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
+$news = getNews();
+$user = unserialize($_SESSION['user']);
+$level = getLevelByUser($user);
+?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -66,7 +76,9 @@
 	<h2>Bravo, tu as finis l'exercice !</h2>
 	<p id=nbFaute></p>
 </div>
-
+<div id="niveauEtu">
+	<?php echo $level['Portee']['Ex2Sol']; ?>
+</div>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
