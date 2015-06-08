@@ -2,7 +2,6 @@
 require_once('../../../db/database.php');
 spl_autoload_register('loadClass');
 //if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
-$news = getNews();
 $user = unserialize($_SESSION['user']);
 $level = getLevelByUser($user);
 ?>
@@ -26,7 +25,6 @@ $level = getLevelByUser($user);
                 <td>
                             <a href="/LogEduc/"><button class="btn btn-success">Menu</button></a>
                         </td>
-                <td>
                 <td>
                     <form method="post" action="../../../Controller/Login_controller.php">
                     <input type="hidden" name="deconnexion" />

@@ -5,7 +5,6 @@ if(!isset($_SESSION['user']) || $_SESSION['username'] == "-error-") header('Loca
 $user = unserialize($_SESSION['user']);
 
 $level = $user->getLevel();
-echo '<pre>';var_dump($user);echo '</pre>';
 ?>
 
 <!DOCTYPE html>

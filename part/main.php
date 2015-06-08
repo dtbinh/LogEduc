@@ -61,15 +61,12 @@ $level = getLevelByUser($user);
                 </tr></table>
         </td>
         </tr><tr>
-        <td class="tdPanelLvl1">
+        <td colspan="2" class="tdPanelLvl1">
             <button class="btnPiano buttonPanel btn btn-danger">Piano virtuel</button>
-                <table class="subTableExercice tablePiano"><tr>
+                <table style="margin: auto" class="subTableExercice tablePiano"><tr>
                     <td><button class="btn btn-danger">Cours</button></td>
-                    <td><a href="../Exercices/Piano"><button class="btn btn-danger">Exercices</button></a></td>
+                    <td><a href="../Exercices/Piano/indexEx.php"><button class="btn btn-danger">Exercices</button></a></td>
                 </tr></table>
-        </td>
-        <td class="tdPanelLvl1">
-            <button class="buttonPanel btn btn-warning disabled">En construction...</button>
         </td>
     </tr></table>
 
