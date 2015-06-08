@@ -1,29 +1,27 @@
 # LogEduc
 Projet Musical pour M1IF22-LogicielsEducatifs
 
-Membres du projet
+Ce logiciel éducatif consiste en un site internet développé avec PHP et MySQL.
+Il est doté de trois thèmes d'apprentissage (instruments, piano virtuel, solfege) subdivisés en exercices.
 
+Membres du projet
 * BOUCHON-11413470 
 * DASILVA-11004892
 * FOULON-11005141
 * THOUVEREZ-10903295
 
-Ce logiciel éducatif consiste en un site internet développé avec PHP et MySQL.
-Il est doté de trois thèmes d'apprentissage (instruments, piano virtuel, solfege) subdivisés en exercices.
-
-
-### Comment l'utiliser ?
+## Comment l'utiliser ?
 Plusieurs possibilités
 
-# Accès au site internet
+### Accès au site internet
 Ce site est stocké sur un serveur distant et accessible via l'url suivante:
 * http://bthouverez.fr/LogEduc
 
-# Clonage du projet
+### Clonage du projet
 Ce projet GitHub est public et peut être cloné avec la commande suivante : 
 * git clone https://github.com/bthouverez/LogEduc LogEduc
 
-# Téléchargement du projet
+### Téléchargement du projet
 Une archive contenant les sources est disponible au téléchargement à l'adresse suivante : 
 * http://bthouverez.fr/LogEduc.zip
 
