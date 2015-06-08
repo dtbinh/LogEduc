@@ -12,6 +12,7 @@ var deadLine = 0;
 var tmpRestant = 0;
 
 var score = 0;
+var nivChrono = 1;
 
 function chrono() {
 
@@ -53,10 +54,11 @@ function chrono() {
         timerID = setTimeout("chrono()", 10);
     }
 }
-function chronoStart() {
+function chronoStart(level) {
     start = new Date();
     deadLine = new Date(0);
     deadLine.setSeconds(3);
+    nivChrono = level;
     chrono();
 }
 
@@ -71,17 +73,21 @@ function chronoReset() {
 }
 
 function chronoStop() {
+
+
+    var level = nivChrono;
+
     if(score >= 20 && level < 3) {
-        modifierEnonce("Super! Vous avez trouvez "+score+" réponses! " +
-            "Vous avez gagné un niveau! <br\/>" +
-            "<div id=\"chrono\">Temps restant : <div id=\"temps\">0:00:00:000<\/div><\/div>");
+        modifierEnonce("Super! Vous avez trouvez "+score+" réponses! ");
         var exo = "exo=" + 33;
         $.ajax({
             type: 'GET',
             url: "/LogEduc/Exercices/Portee/webapp/levelup.php",
             data: exo,
             success: function (data) {
-                modifierEnonce("Fin! Nombre erreur = "+nbErreur+" Félicitation tu gagnes un niveau!");
+                modifierEnonce("Super! Vous avez trouvez "+score+" réponses! " +
+                    "Vous avez gagné un niveau! <br\/>" +
+                    "<div id=\"chrono\">Temps restant : <div id=\"temps\">0:00:00:000<\/div><\/div>");
             }
         });
     }

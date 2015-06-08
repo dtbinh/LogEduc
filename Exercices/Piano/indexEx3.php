@@ -28,6 +28,8 @@ $level = getLevelByUser($user);
 </head>
 <body>
 
+<a href="/LogEduc/"><button class="btn btn-success menu">Retour menu</button></a>
+
     <!-- Piano -->
     <ul class="piano" id="piano">
         <li class="key" style="display: none" level="1">
@@ -97,7 +99,7 @@ $level = getLevelByUser($user);
 
     <!-- End Site -->
 
-    <div id="niveauEtu">
+    <div id="niveauEtu" style="display: none">
     	<?php echo $level['Piano']['Exo3']; ?>
     </div>
 

@@ -26,10 +26,7 @@ $level = getLevelByUser($user);
                    <a href="/LogEduc/"><button class="btn btn-success">Menu</button></a>
                         </td>
                 <td>
-                    <form method="post" action="../../Controller/Login_controller.php">
-                    <input type="hidden" name="deconnexion" />
-                    <input type="submit"class="btn btn-danger" value="Quitter" />
-                    </form>
+
                 </td>
             </tr>
         </table>

@@ -3,10 +3,12 @@
  */
 
 var arrayNotes = [];
+var nivEtu = 1;
 
 function generateExercicePianoChrono(level) {
 
     apparaitrePiano(level);
+    nivEtu = level;
 
     var toucheBlanche = jsonTableauNoteBlanche1;
     var toucheNoire = jsonTableauNoteNoire1;
@@ -55,7 +57,8 @@ function generateExercicePianoChrono(level) {
 function startExerciceChrono() {
 
     modifierEnonce("C'est parti! <br\/><div id=\"chrono\">Temps restant : <div id=\"temps\"><\/div><\/div>");
-    chronoStart();
+
+    chronoStart(nivEtu);
 
     var idTouch = arrayNotes[0].id;
     var nomTouch = arrayNotes[0].name;
@@ -67,7 +70,7 @@ function startExerciceChrono() {
     $container.append(baliseExercice);
 }
 
-function verifNoteChrono(note) {
+function verifNoteChrono(note,level) {
 
     var $noteActuelle = $('div[note=chrono]');
     var dataActuelle = $noteActuelle.attr('id');
