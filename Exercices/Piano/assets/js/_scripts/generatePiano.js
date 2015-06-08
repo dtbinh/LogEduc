@@ -48,5 +48,8 @@ var apparaitrePiano = function (level) {
     $notesNoirs.each(function(){
         $(this).attr('id-database',toucheNoire.data[i].id);
         i++;
+        if(i %2 == 1 ) {
+            i++
+        }
     });
 }
