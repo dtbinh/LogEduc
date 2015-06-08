@@ -1,6 +1,13 @@
 # LogEduc
 Projet Musical pour M1IF22-LogicielsEducatifs
 
+Membres du projet
+
+* BOUCHON-11413470 
+* DASILVA-11004892
+* FOULON-11005141
+* THOUVEREZ-10903295
+
 Ce logiciel éducatif consiste en un site internet développé avec PHP et MySQL.
 Il est doté de trois thèmes d'apprentissage (instruments, piano virtuel, solfege) subdivisés en exercices.
 
