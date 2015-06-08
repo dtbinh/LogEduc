@@ -23,6 +23,49 @@ nbNote = 0;
 indices = new Array();
 indexIndice = 0;
 
+//Variable pour l'alea
+poidNote = new Array();
+var notep = $('#fauxDo').html();
+notep = parseInt(notep);
+console.log(notep);
+dof = notep;
+poidNote.push(notep);
+
+notep = $('#fauxRe').html();
+notep = parseInt(notep);
+console.log(notep);
+ref = notep;
+poidNote.push(notep);
+
+notep = $('#fauxMi').html();
+notep = parseInt(notep);
+console.log(notep);
+mif = notep;
+poidNote.push(notep);
+
+notep = $('#fauxFa').html();
+notep = parseInt(notep);
+console.log(notep);
+faf = notep;
+poidNote.push(notep);
+
+notep = $('#fauxSol').html();
+notep = parseInt(notep);
+console.log(notep);
+solf = notep;
+poidNote.push(notep);
+
+notep = $('#fauxLa').html();
+notep = parseInt(notep);
+console.log.notep;
+laf = notep;
+poidNote.push(notep);
+
+notep = $('#fauxSi').html();
+notep = parseInt(notep);
+console.log(notep);
+sif = notep;
+poidNote.push(notep);
 
 
 
@@ -39,9 +82,69 @@ function levelUp()
             }
         });
 }
-function aleatoire(min, max) {
-    return (Math.floor((max-min)*Math.random())+min);
+
+function misAjourFaute()
+{
+	alert("ok1");
+	var noteFausse ="do="+ dof + "&re=" + ref +"&mi="+mif+"&fa="+faf+"&sol="+solf+"&la="+laf+"&si="+sif;
+	 $.ajax({
+        type: 'GET',
+          url: "/LogEduc/Exercices/Portee/webapp/addNoteFausseSol.php", 
+           data: noteFausse,
+            success: function (data) {
+                        alert("ok");
+            }
+        });
 }
+
+function aleatoire(min, max) {
+
+	var nbtotal = 0;
+	for(var i=0; i<poidNote.length; i++)
+	{
+		nbtotal+=poidNote[i];
+	}
+	var dof = poidNote[0];
+	var ref = poidNote[1] + dof;
+	var mif = poidNote[2] + ref;
+	var faf = poidNote[3]+ mif;
+	var solf = poidNote[4]+ faf;
+	var laf = poidNote[5]+ solf;
+	var sif = poidNote[6]+ laf;
+	//On genere l'alea entre 0 et nbTotal
+	var alea1 = Math.floor((nbtotal-0)*Math.random())+1;
+	console.log("alea ="+alea1);
+	if(alea1 <= dof)
+	{
+		return 0;
+	}
+	else if(alea1 <= ref)
+	{
+		return 1;
+	}
+	else if(alea1 <= mif)
+	{
+		return 2;
+	}
+	else if(alea1 <= faf)
+	{
+		return 3;
+	}
+	else if(alea1 <= solf)
+	{
+		return 4;
+	}
+	else if(alea1 <= laf)
+	{
+		return 5;
+	}
+	else 
+	{
+		return 6;
+	}
+	return 6;
+   //	 return (Math.floor((max-min)*Math.random())+min);
+};
 
 function recupInfoBase(){
 	//Ici la requete sql pour récupérer les infos de la base. A faire avant toute chose !
@@ -72,6 +175,8 @@ function choixNiveau(){
 		genereExerciceNiveau5();
 		break;
 	}
+	if(niveauJoueur > 5)
+		genereExerciceNiveau5();
 	
 }
 
@@ -171,10 +276,10 @@ function reInitPortee(){
 	genererPortee(20, 20);
 }
 
+
 function finJeu()
 {
-	function finJeu()
-{
+	misAjourFaute();
 	if(nbFaute == 0)
 	{
 		var text = "<FONT color='green' size='3' >Hey pas mal ! Tu as réussi du premier coup ! </FONT>";
@@ -186,7 +291,7 @@ function finJeu()
 	}
 	changerMessage(text);
 }
-}
+
 
 
 function genereExerciceNiveau1()
@@ -479,6 +584,7 @@ function verifierNiveau1(){
 				$('[id~="'+suiteNoteIndice[i]+'"]').css("background-image","url('"+$('[id~="'+suiteNoteIndice[i]+'"]').attr("notePlacee")+"2green.png')");
 		
 			//Si on a placé une bonne note sur cette ligne, on la retient pour l'indice
+
 			noteBienPlaceeLigne.push($('[id~="'+suiteNoteIndice[i]+'"]').attr("ligne"));
 			//On retient les notes que l'on a bien placé
 			noteBienPlaceeSeven.push($('[id~="'+suiteNoteIndice[i]+'"]').attr("notePlacee"));
@@ -487,6 +593,7 @@ function verifierNiveau1(){
 		}
 		else
 		{
+			incrementFaute($('[id~="'+suiteNoteIndice[i]+'"]').attr("note"));
 			console.log("nope");
 			if($('[id~="'+suiteNoteIndice[i]+'"]').attr("class") == "case ui-droppable")
 				$('[id~="'+suiteNoteIndice[i]+'"]').css("background-image","url('"+$('[id~="'+suiteNoteIndice[i]+'"]').attr("notePlacee")+"3red.png')");
@@ -627,19 +734,7 @@ function donneSolution()
 		changerMessage(mess);
 }
 
-function finJeu()
-{
-	if(nbFaute == 0)
-	{
-		var text = "<FONT color='green' size='3' >Hey pas mal ! Tu as réussi du premier coup ! </FONT>";
-		levelUp();
-	}
-	else
-	{
-		var text = "<FONT color='green' size='3' > Bravo ! Tu as fini l'exercice en </FONT><FONT color='blue' size='3'>"+(nbFaute+1)+" </FONT><FONT color='green' size='3'> essais ! <br/> Tu as fais </FONT><FONT color='blue' size='3'>"+nbFauteTotale+" </FONT><FONT color='green' size='3'>fautes au total </FONT>" ;
-	}
-	changerMessage(text);
-}
+
 
 function donneIndice()
 {
@@ -1201,4 +1296,81 @@ function genereExerciceNiveau5()
 	gestionDragDrop();
 	poseQuestionNiveau5();
 	
+}
+
+function decrementeFaute(note)
+{
+	
+	if(note == "do")
+	{
+		dof--;
+	}
+	if(note == "re")
+	{
+		ref--;
+	}
+	if(note == "mi")
+	{
+		mif--;
+	}
+	if(note == "fa")
+	{
+		faf--;
+	}
+	if(note == "sol")
+	{
+		solf--;
+	}
+	if(note == "la")
+	{
+		laf--;
+	}
+	if(note == "si")
+	{
+		sif--;
+	}
+}
+function incrementFaute(note)
+{
+	
+	if(note == "do")
+	{
+		dof++;
+	}
+	if(note == "re")
+	{
+		ref++;
+	}
+	if(note == "mi")
+	{
+		mif++;
+	}
+	if(note == "fa")
+	{
+		faf++;
+	}
+	if(note == "sol")
+	{
+		solf++;
+	}
+	if(note == "la")
+	{
+		laf++;
+	}
+	if(note == "si")
+	{
+		sif++;
+	}
+}
+
+function afficheNoteFausse()
+{
+	console.log("note fausses :");
+	console.log(dof);
+	console.log(ref);
+	console.log(mif);
+	console.log(faf);
+	console.log(solf);
+	console.log(laf);
+	console.log(sif);
 }

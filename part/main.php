@@ -54,7 +54,7 @@ $level = getLevelByUser($user);
                 </tr></table>
         </td>
         <td class="tdPanelLvl1">
-            <button class="btnPortee buttonPanel btn btn-primary">Portée</button>
+            <button class="btnPortee buttonPanel btn btn-primary">Solfège</button>
                 <table class="subTableExercice tablePortee"><tr>
                     <td><a href="../Exercices/Portee/webapp/CourPortee.php"><button class="btn btn-primary">Cours</button></a></td>
                     <td><a href="../Exercices/Portee/webapp/menuExo.php"><button class="btn btn-primary">Exercices</button></a></td>

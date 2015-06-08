@@ -32,6 +32,43 @@ nbClickE3 = 0;
 nbLigneClickE31 = -1;
 nbLigneClickE32 = -1;
 
+// LEs var pour l'alea
+
+poidNote = new Array();
+var notep = $('#fauxDo').html();
+notep = parseInt(notep);
+dof = notep;
+poidNote.push(notep);
+
+notep = $('#fauxRe').html();
+notep = parseInt(notep);
+ref = notep;
+poidNote.push(notep);
+
+notep = $('#fauxMi').html();
+notep = parseInt(notep);
+mif = notep;
+poidNote.push(notep);
+
+notep = $('#fauxFa').html();
+notep = parseInt(notep);
+faf = notep;
+poidNote.push(notep);
+
+notep = $('#fauxSol').html();
+notep = parseInt(notep);
+solf = notep;
+poidNote.push(notep);
+
+notep = $('#fauxLa').html();
+notep = parseInt(notep);
+laf = notep;
+poidNote.push(notep);
+
+notep = $('#fauxSi').html();
+notep = parseInt(notep);
+sif = notep;
+poidNote.push(notep);
 function levelUp()
 {
 	
@@ -42,6 +79,19 @@ function levelUp()
            data: exo,
             success: function (data) {
                   alert("Félicitaion, tu as augmenté d'un niveau !");          
+            }
+        });
+}
+function misAjourFaute()
+{
+	
+	var noteFausse ="do="+ dof + "&re=" + ref +"&mi="+mif+"&fa="+faf+"&sol="+solf+"&la="+laf+"&si="+sif;
+	 $.ajax({
+        type: 'GET',
+          url: "/LogEduc/Exercices/Portee/webapp/addNoteFausseFa.php", 
+           data: noteFausse,
+            success: function (data) {
+                            
             }
         });
 }
@@ -68,7 +118,8 @@ function choixNiveau(){
 		genereExerciceNiveau3();
 		break;
 	}
-	
+	if(niveauJoueur > 3)
+		genereExerciceNiveau3();
 }
 
 
@@ -570,11 +621,14 @@ function finJeu()
 	{
 		levelUp();
 	}
+	afficheNoteFausse();
+	misAjourFaute();
 }
 
 function verifierNoteClickNiveau1(note)
 {
 	console.log(blockClick);
+	incrementFaute(suiteNote[indiceProgression]);
 	if(blockClick == false)
 	{
 		console.log(blockClick);
@@ -586,7 +640,7 @@ function verifierNoteClickNiveau1(note)
 		if(note == suiteNote[indiceProgression])
 		{
 			DonneReponsePosNiv1(note);
-			
+			decrementeFaute(suiteNote[indiceProgression]);
 			if(indiceProgression == 4)
 			{
 					finJeu();
@@ -690,7 +744,52 @@ function ajoutMouseOverLeave()
 }
 
 function aleatoire(min, max) {
-    return (Math.floor((max-min)*Math.random())+min);
+
+	var nbtotal = 0;
+	for(var i=0; i<poidNote.length; i++)
+	{
+		nbtotal+=poidNote[i];
+	}
+	var dof = poidNote[0];
+	var ref = poidNote[1] + dof;
+	var mif = poidNote[2] + ref;
+	var faf = poidNote[3]+ mif;
+	var solf = poidNote[4]+ faf;
+	var laf = poidNote[5]+ solf;
+	var sif = poidNote[6]+ laf;
+	//On genere l'alea entre 0 et nbTotal
+	var alea1 = Math.floor((nbtotal-0)*Math.random())+1;
+	console.log("alea ="+alea1);
+	if(alea1 <= dof)
+	{
+		return 0;
+	}
+	else if(alea1 <= ref)
+	{
+		return 1;
+	}
+	else if(alea1 <= mif)
+	{
+		return 2;
+	}
+	else if(alea1 <= faf)
+	{
+		return 3;
+	}
+	else if(alea1 <= solf)
+	{
+		return 4;
+	}
+	else if(alea1 <= laf)
+	{
+		return 5;
+	}
+	else 
+	{
+		return 6;
+	}
+	return 6;
+   //	 return (Math.floor((max-min)*Math.random())+min);
 };
 
 function genereExerciceNiveau2()
@@ -939,6 +1038,7 @@ function verifierNoteClickNiveau2(note1,note2)
 	noteC1 = -1;
 	noteC2 = -1;
 	console.log(blockClick);
+	incrementFaute(suiteNote[indiceProgression]);
 	if(blockClick == false)
 	{
 		console.log(blockClick);
@@ -952,7 +1052,7 @@ function verifierNoteClickNiveau2(note1,note2)
 			if(noteC2v == suiteNote[indiceProgression])
 			{
 						DonneReponsePosNiv2(noteC1v);
-						
+						decrementeFaute(suiteNote[indiceProgression]);
 						if(indiceProgression == 4)
 						{
 								finJeu();
@@ -1301,7 +1401,7 @@ function verifierNoteClickNiveau3(note1,note2,note3)
 	noteC2E3 = -1;
 	noteC3E3 = -1;
 	console.log(blockClick);
-	
+	incrementFaute(suiteNote[indiceProgression]);
 	if(blockClick == false)
 	{
 		console.log(blockClick);
@@ -1316,7 +1416,8 @@ function verifierNoteClickNiveau3(note1,note2,note3)
 			{
 				if(noteC3v == suiteNote[indiceProgression])
 				{
-						DonneReponsePosNiv3(noteC1v);	
+						DonneReponsePosNiv3(noteC1v);
+						decrementeFaute(suiteNote[indiceProgression]);	
 						if(indiceProgression == 4)
 						{
 								finJeu();
@@ -1391,4 +1492,80 @@ function verifierNoteClickNiveau3(note1,note2,note3)
 			}
 		}
 	}
+}
+function decrementeFaute(note)
+{
+	
+	if(note == "Do")
+	{
+		dof--;
+	}
+	if(note == "Re")
+	{
+		ref--;
+	}
+	if(note == "Mi")
+	{
+		mif--;
+	}
+	if(note == "Fa")
+	{
+		faf--;
+	}
+	if(note == "Sol")
+	{
+		solf--;
+	}
+	if(note == "La")
+	{
+		laf--;
+	}
+	if(note == "Si")
+	{
+		sif--;
+	}
+}
+function incrementFaute(note)
+{
+	
+	if(note == "Do")
+	{
+		dof++;
+	}
+	if(note == "Re")
+	{
+		ref++;
+	}
+	if(note == "Mi")
+	{
+		mif++;
+	}
+	if(note == "Fa")
+	{
+		faf++;
+	}
+	if(note == "Sol")
+	{
+		solf++;
+	}
+	if(note == "La")
+	{
+		laf++;
+	}
+	if(note == "Si")
+	{
+		sif++;
+	}
+}
+
+function afficheNoteFausse()
+{
+	console.log("note fausses :");
+	console.log(dof);
+	console.log(ref);
+	console.log(mif);
+	console.log(faf);
+	console.log(solf);
+	console.log(laf);
+	console.log(sif);
 }

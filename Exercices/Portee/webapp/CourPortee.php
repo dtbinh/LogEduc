@@ -16,7 +16,7 @@ $level = getLevelByUser($user);
 <body>
 <div class="row titre">
 	<div class="col-sm-8 col-sm-offset-2">
-		    	<h2>Retrouve la note en Clé de Sol !</h2>
+		    	<h2>Apprend à lire les notes !</h2>
 	</div>
 	<div class="col-sm-1">
 		<br/>
@@ -29,7 +29,7 @@ $level = getLevelByUser($user);
 		                </td>
 		               <td><a href="/LogEduc/Exercices/Portee/webapp/menuExo.php"><button class="btn btn-primary">Exos</button></a>
 		                <td>
-		               
+		               	
 		                 
 		                </td>
 		            </tr>
@@ -86,7 +86,7 @@ $level = getLevelByUser($user);
 					<div id="introduction" style="display: none;">
 						<FONT size='2'>
 							<br/>
-							<a  onmouseover="this.style.cursor='pointer'" onClick="introduction()"><FONT size="6"> 1) Introduction </FONT> </a>
+							<a  onmouseover="this.style.cursor='pointer'" onClick="sommaire()"><FONT size="6"> 1) Introduction </FONT> </a>
 							<br/><br/>
 							<a onmouseover="this.style.cursor='pointer'" onClick="introduction()"><FONT size="4">Qu'est ce que le solfège ? </FONT> </a>
 							<br/><br/>
@@ -338,7 +338,7 @@ $level = getLevelByUser($user);
 					<div id="cleSol" style="display: none;">
 						<FONT size='2'>
 						<br/>
-							<a onmouseover="this.style.cursor='pointer'" onClick="cleSol()"><FONT size="6"> 2) La clé de Sol </FONT> </a>
+							<a onmouseover="this.style.cursor='pointer'" onClick="sommaire()"><FONT size="6"> 2) La clé de Sol </FONT> </a>
 							<br/><br/>
 							Allons-y ! <br/>
 							Pour rappel, il faut placer au début de chaque portée une clé. Cette clé est indispensable pour savoir où placer les notes.
@@ -392,7 +392,7 @@ $level = getLevelByUser($user);
 					<div id="cleFa" style="display: none;">
 						<FONT size='2'>
 						<br/>
-						<a onmouseover="this.style.cursor='pointer'" onClick="cleFa()"><FONT size="6"> 3) La clé de Fa </FONT> </a>
+						<a onmouseover="this.style.cursor='pointer'" onClick="sommaire()"><FONT size="6"> 3) La clé de Fa </FONT> </a>
 						<br/><br/>
 						C'est partit !<br/>
 						Pour rappel, il faut placer au début de chaque portée une clé. Cette clé est indispensable pour savoir où placer les notes.

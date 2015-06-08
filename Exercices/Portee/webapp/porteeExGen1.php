@@ -6,6 +6,8 @@ spl_autoload_register('loadClass');
 $news = getNews();
 $user = unserialize($_SESSION['user']);
 $level = getLevelByUser($user);
+$notes = getNoteFausseSol($user);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,7 +71,7 @@ $level = getLevelByUser($user);
 </div>
 <div class="row">
 	<div class = "col-sm-10 col-sm-offset-1">
-		<a href="CourPortee.html" onmouseover="this.style.cursor='pointer'">Retour à la leçon</a>
+		<a href="CourPortee.php" onmouseover="this.style.cursor='pointer'">Retour à la leçon</a>
 	</div>
 </div>
 <div id="instruction" class="popup_block">
@@ -78,14 +80,34 @@ $level = getLevelByUser($user);
 </div>
 <div id="ExoFini" class="popup_block2">
 	<h2>Bravo, tu as finis l'exercice !</h2>
-	<p id=nbFaute></p>
+	<p id='nbFaute'></p>
 </div>
 
 
 <div id="niveauEtu">
 	<?php echo $level['Portee']['Ex1Sol']; ?>
 </div>
-
+<div id="fauxDo">
+	<?php echo $notes[0]; ?>
+</div>
+<div id="fauxRe">
+	<?php echo $notes[1]; ?>
+</div>
+<div id="fauxMi">
+	<?php echo $notes[2]; ?>
+</div>
+<div id="fauxFa">
+	<?php echo $notes[3]; ?>
+</div>
+<div id="fauxSol">
+	<?php echo $notes[4]; ?>
+</div>
+<div id="fauxLa">
+	<?php echo $notes[5]; ?>
+</div>
+<div id="fauxSi">
+	<?php echo $notes[6]; ?>
+</div>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="./../resources/jquery-ui-1.11.4/jquery-ui.js"> </script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

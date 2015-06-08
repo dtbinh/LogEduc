@@ -150,15 +150,24 @@ function addUser($user) {
         //Initialisation des niveaux du joueur
         $sql = 'INSERT INTO mif22_levelUserExercice (`id_user`, `id_exercice`, `level`) VALUES 
         ('.$user->getId().', 1, 0), 
-        ('.$user->getId().', 21, 0), 
-        ('.$user->getId().', 22, 0), 
-        ('.$user->getId().', 23, 0), 
-        ('.$user->getId().', 24, 0), 
-        ('.$user->getId().', 31, 0), 
-        ('.$user->getId().', 32, 0), 
-        ('.$user->getId().', 33, 0);';
+        ('.$user->getId().', 21, 1), 
+        ('.$user->getId().', 22, 1), 
+        ('.$user->getId().', 23, 1), 
+        ('.$user->getId().', 24, 1), 
+        ('.$user->getId().', 31, 1), 
+        ('.$user->getId().', 32, 1), 
+        ('.$user->getId().', 33, 1);';
         echo $sql;
         mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
+
+        $sql = 'INSERT INTO mif22_noteFausseExoSol (`id_user`,`do`,`re`,`mi`,`fa`,`sol`,`la`,`si`) VALUES
+        ('.$user->getId().', 1, 1, 1, 1, 1, 1, 1);';
+        mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
+
+        $sql = 'INSERT INTO mif22_noteFausseExoFa (`id_user`,`do`,`re`,`mi`,`fa`,`sol`,`la`,`si`) VALUES
+        ('.$user->getId().', 1, 1, 1, 1, 1, 1, 1);';
+        mysql_query($sql) or die('Erreur SQL la ! : ' . mysql_error());
+
         mysql_close($db);  
     } 
 }
@@ -255,4 +264,62 @@ function levelUp($user, $exo) {
     mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
     mysql_close($db);  
 
+}
+
+function getNoteFausseSol($user)
+{
+    $db = connectDB();
+    $sql = 'SELECT do,re,mi,fa,sol,la,si FROM mif22_noteFausseExoSol WHERE id_user='.$user->getId();
+    //echo $sql;
+    $req = mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    $notes = array();
+    while ($data = mysql_fetch_assoc($req)) {
+        $notes[0] = $data['do'];
+        $notes[1] = $data['re'];
+        $notes[2] = $data['mi'];
+        $notes[3] = $data['fa'];
+        $notes[4] = $data['sol'];
+        $notes[5] = $data['la'];
+        $notes[6] = $data['si'];
+    }
+    mysql_close($db);
+   // var_dump($notes);
+    return $notes;
+}
+
+function metAjourNoteSol($user,$do,$re,$mi,$fa,$sol,$la,$si)
+{
+    $db = connectDB();
+    $sql = 'UPDATE mif22_noteFausseExoSol SET do = '.$do.',re = '.$re.',mi = '.$mi.',fa = '.$fa.',sol = '.$sol.',la = '.$la.',si = '.$si.'  WHERE id_user = '.$user->getId().';';
+    mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    mysql_close($db);  
+}
+
+function getNoteFausseFa($user)
+{
+    $db = connectDB();
+    $sql = 'SELECT do,re,mi,fa,sol,la,si FROM mif22_noteFausseExoFa WHERE id_user='.$user->getId();
+    //echo $sql;
+    $req = mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    $notes = array();
+    while ($data = mysql_fetch_assoc($req)) {
+        $notes[0] = $data['do'];
+        $notes[1] = $data['re'];
+        $notes[2] = $data['mi'];
+        $notes[3] = $data['fa'];
+        $notes[4] = $data['sol'];
+        $notes[5] = $data['la'];
+        $notes[6] = $data['si'];
+    }
+    mysql_close($db);
+  //  var_dump($notes);
+    return $notes;
+}
+
+function metAjourNoteFa($user,$do,$re,$mi,$fa,$sol,$la,$si)
+{
+    $db = connectDB();
+    $sql = 'UPDATE mif22_noteFausseExoFa SET do = '.$do.',re = '.$re.',mi = '.$mi.',fa = '.$fa.',sol = '.$sol.',la = '.$la.',si = '.$si.'  WHERE id_user = '.$user->getId().';';
+    mysql_query($sql) or die('Erreur SQL ! : ' . mysql_error());
+    mysql_close($db);  
 }

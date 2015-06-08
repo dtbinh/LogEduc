@@ -23,7 +23,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `mif22_news`;
 DROP TABLE IF EXISTS `mif22_user`;
 DROP TABLE IF EXISTS `mif22_levelUserExercice`;
-
+DROP TABLE IF EXISTS `mif22_noteFausseExoSol`;
+DROP TABLE IF EXISTS `mif22_noteFausseExoFa`;
 -- ----------------------------------------------------------------------------------------------------------------
 --
 -- Structure de la table `mif22_news`
@@ -49,6 +50,54 @@ INSERT INTO `mif22_news` (`id_news`, `content_news`) VALUES
 -- ----------------------------------------------------------------------------------------------------------------
 --
 -- Structure de la table `mif22_user`
+--
+
+-- Structure de la table `mif22_noteFausseExoSol`
+--
+
+CREATE TABLE IF NOT EXISTS `mif22_noteFausseExoSol` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `do` int(11) NOT NULL,
+  `re` int(11) NOT NULL,
+  `mi` int(11) NOT NULL,
+  `fa` int(11) NOT NULL,
+  `sol` int(11) NOT NULL,
+  `la` int(11) NOT NULL,
+  `si` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+--
+-- Contenu de la table `mif22_noteFausseExoSol`
+--
+INSERT INTO `mif22_noteFausseExoSol` (`id_user`,`do`,`re`,`mi`,`fa`,`sol`,`la`,`si`) VALUES
+
+(2, 1, 1, 1, 1, 1, 1, 1);
+
+-- Structure de la table `mif22_noteFausseExoFa`
+--
+
+CREATE TABLE IF NOT EXISTS `mif22_noteFausseExoFa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) NOT NULL,
+  `do` int(11) NOT NULL,
+  `re` int(11) NOT NULL,
+  `mi` int(11) NOT NULL,
+  `fa` int(11) NOT NULL,
+  `sol` int(11) NOT NULL,
+  `la` int(11) NOT NULL,
+  `si` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+--
+-- Contenu de la table `mif22_noteFausseExoSol`
+--
+INSERT INTO `mif22_noteFausseExoFa` (`id_user`,`do`,`re`,`mi`,`fa`,`sol`,`la`,`si`) VALUES
+
+(2, 1, 1, 1, 1, 1, 1, 1);
+
+--
+-- Contenu de la table `mif22_news`
 --
 
 CREATE TABLE IF NOT EXISTS `mif22_user` (
