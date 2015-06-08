@@ -65,7 +65,10 @@ $level = getLevelByUser($user);
             <button class="btnPiano buttonPanel btn btn-danger">Piano virtuel</button>
                 <table class="subTableExercice tablePiano"><tr>
                     <td><a href="../Exercices/Piano/indexCours.php"><button class="btn btn-danger">Cours</button></a></td>
-                    <td><a href="../Exercices/Piano/indexEx.php"><button class="btn btn-danger">Exercices</button></a></td>
+                    <td><?php
+                    if($user->getType() == 0) echo '<a href="../Exercices/Piano/indexEnseignant.php"><button class="btn btn-danger">Exercices</button></a>';
+                    else echo '<a href="../Exercices/Piano/indexEx.php"><button class="btn btn-danger">Exercices</button></a>';
+                ?></td>
                 </tr></table>
         </td>
         <td class="tdPanelLvl1">
