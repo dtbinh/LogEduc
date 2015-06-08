@@ -83,7 +83,7 @@ function misAjourFaute()
           url: "/LogEduc/Exercices/Portee/webapp/addNoteFausseFa.php", 
            data: noteFausse,
             success: function (data) {
-                 alert("ok");           
+                         
             }
         });
 }

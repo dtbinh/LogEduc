@@ -85,14 +85,14 @@ function levelUp()
 
 function misAjourFaute()
 {
-	alert("ok1");
+
 	var noteFausse ="do="+ dof + "&re=" + ref +"&mi="+mif+"&fa="+faf+"&sol="+solf+"&la="+laf+"&si="+sif;
 	 $.ajax({
         type: 'GET',
           url: "/LogEduc/Exercices/Portee/webapp/addNoteFausseSol.php", 
            data: noteFausse,
             success: function (data) {
-                        alert("ok");
+                       
             }
         });
 }
