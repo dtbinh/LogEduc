@@ -35,6 +35,10 @@ $levels = array();
 		}
 	}
 	?> 
+	
+	<br/>
+	<br/>
+	<a href="../Exercices/Piano/indexEnseignant.php"><button class="btn btn-danger">Créer un exercice de Piano</button></a>
 <script type="text/javascript"  src="../plugin/jquery/jquery.min.js"> </script>
 <script type="text/javascript"  src="../js/script.js"> </script>
 </body>

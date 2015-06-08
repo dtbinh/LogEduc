@@ -6,19 +6,20 @@ function generateCours() {
 
     var body = $('body');
     //Le Rémi Fasol
-    body.prepend(   "<div id=\"partieGauche\" class=\"col-sm-6\">" +
-                        "<div id=\"interfacePerso\">" +
-                            "<div class=\"col-sm-5\" id=\"persoContainer\">" +
-                                "<img id=\"perso\" height=\"250\" width=\"250\" src=\"assets\/img\/ico\/Perso.jpeg\"/>" +
-                            "<\/div>" +
-                            "<div class=\"col-sm-6\" id=\"BulleText\">" +
-                                "<div id=\"TextContent\"><p><FONT color='blue' size='4'>Bonjour camarade, je suis Rémi Fasol! " +
-                                    "Aujourd'hui nous allons apprendre le piano !<\/FONT><\/p>" +
-                                    "<a onmouseover=\"this.style.cursor='pointer'\" onClick=\"sommaire()\">suite -></a>" +
+    body.prepend(   "<a href=\"\/LogEduc\/\"><button class=\"btn btn-success menu\">Retour menu<\/button><\/a>" +
+                        "<div id=\"partieGauche\" class=\"col-sm-6\">" +
+                            "<div id=\"interfacePerso\">" +
+                                "<div class=\"col-sm-5\" id=\"persoContainer\">" +
+                                    "<img id=\"perso\" height=\"250\" width=\"250\" src=\"assets\/img\/ico\/Perso.jpeg\"/>" +
+                                "<\/div>" +
+                                "<div class=\"col-sm-6\" id=\"BulleText\">" +
+                                    "<div id=\"TextContent\"><p><FONT color='blue' size='4'>Bonjour camarade, je suis Rémi Fasol! " +
+                                        "Aujourd'hui nous allons apprendre le piano !<\/FONT><\/p>" +
+                                        "<a onmouseover=\"this.style.cursor='pointer'\" onClick=\"sommaire()\">suite -></a>" +
+                                    "<\/div>" +
                                 "<\/div>" +
                             "<\/div>" +
-                        "<\/div>" +
-                    "<\/div>");
+                        "<\/div>");
 
     // Le Titre
     body.prepend(   "<div class=\"col-md-12 titre\">" +
