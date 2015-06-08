@@ -54,19 +54,22 @@ $level = getLevelByUser($user);
                 </tr></table>
         </td>
         <td class="tdPanelLvl1">
-            <button class="btnPortee buttonPanel btn btn-primary">Solfège</button>
+            <button class="btnPortee buttonPanel btn btn-primary">Portée</button>
                 <table class="subTableExercice tablePortee"><tr>
                     <td><a href="../Exercices/Portee/webapp/CourPortee.php"><button class="btn btn-primary">Cours</button></a></td>
                     <td><a href="../Exercices/Portee/webapp/menuExo.php"><button class="btn btn-primary">Exercices</button></a></td>
                 </tr></table>
         </td>
         </tr><tr>
-        <td colspan="2" class="tdPanelLvl1">
+        <td class="tdPanelLvl1">
             <button class="btnPiano buttonPanel btn btn-danger">Piano virtuel</button>
-                <table style="margin: auto" class="subTableExercice tablePiano"><tr>
-                    <td><button class="btn btn-danger">Cours</button></td>
+                <table class="subTableExercice tablePiano"><tr>
+                    <td><a href="../Exercices/Piano/indexCours.php"><button class="btn btn-danger">Cours</button></a></td>
                     <td><a href="../Exercices/Piano/indexEx.php"><button class="btn btn-danger">Exercices</button></a></td>
                 </tr></table>
+        </td>
+        <td class="tdPanelLvl1">
+            <button class="buttonPanel btn btn-warning disabled">En construction...</button>
         </td>
     </tr></table>
 
