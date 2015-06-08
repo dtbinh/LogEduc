@@ -23,7 +23,7 @@ Ce projet GitHub est public et peut être cloné avec la commande suivante :
 
 ### Téléchargement du projet
 Une archive contenant les sources est disponible au téléchargement à l'adresse suivante : 
-* http://bthouverez.fr/docs/LogEduc.zip
+* http://bthouverez.fr/docs/LogEduc_GpPlante.zip
 
 
 Les deux derniers choix nécessitent l'installation de quelques logiciels pour le web (Apache, PHP, phpmyadmin ...) , le Wiki du projet explique la marche à suivre pour tester en local!
