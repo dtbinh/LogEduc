@@ -4,21 +4,49 @@
 
 var arrayNotes = [];
 
-function generateExercicePianoChrono() {
+function generateExercicePianoChrono(level) {
 
-    apparaitrePiano(1);
+    apparaitrePiano(level);
 
     var toucheBlanche = jsonTableauNoteBlanche1;
+    var toucheNoire = jsonTableauNoteNoire1;
+
+    if(level == 3) {
+        toucheBlanche = jsonTableauNoteBlanche2;
+        toucheNoire = jsonTableauNoteNoire2;
+    }
+
     var lengthWhite = Object.keys(toucheBlanche.data).length;
+    var lengthBlack = Object.keys(toucheNoire.data).length;
 
-    for(var i = 0; i < 10; i++) {
 
-        var alea = aleatoire(0,lengthWhite);
+    if(level == 1) {
+        for (var i = 0; i < 10; i++) {
 
-        var idTouch = toucheBlanche.data[alea].tId;
-        var nomTouch = toucheBlanche.data[alea].nom;
+            var alea = aleatoire(0, lengthWhite);
 
-        arrayNotes[i] = {id:idTouch, name:nomTouch};
+            var idTouch = toucheBlanche.data[alea].tId;
+            var nomTouch = toucheBlanche.data[alea].nom;
+
+            arrayNotes[i] = {id: idTouch, name: nomTouch};
+        }
+    }
+    else {
+        for (var i = 0; i < 10; i++) {
+            if (aleatoire(0, 3) < 2) {
+                var alea = aleatoire(0, lengthWhite);
+
+                var idTouch = toucheBlanche.data[alea].tId;
+                var nomTouch = toucheBlanche.data[alea].nom;
+            }
+            else {
+                var alea = aleatoire(0, lengthBlack);
+
+                var idTouch = toucheNoire.data[alea].tId;
+                var nomTouch = toucheNoire.data[alea].nom;
+            }
+            arrayNotes[i] = {id: idTouch, name: nomTouch};
+        }
     }
 
     modifierEnonce("ATTENTION! Il faut répondre avant la fin du compte à rebours... VOUS ETES PRET?? <button onclick=\"startExerciceChrono()\">START<\/button>");
@@ -69,16 +97,43 @@ function verifNoteChrono(note) {
         if(arrayNotes.length < 5) {
 
             var toucheBlanche = jsonTableauNoteBlanche1;
+            var toucheNoire = jsonTableauNoteNoire1;
+
+            if(level == 3) {
+                toucheBlanche = jsonTableauNoteBlanche2;
+                toucheNoire = jsonTableauNoteNoire2;
+            }
+
             var lengthWhite = Object.keys(toucheBlanche.data).length;
+            var lengthBlack = Object.keys(toucheNoire.data).length;
 
-            for(var i = 0; i < 10; i++) {
+            if(level == 1) {
+                for (var i = 0; i < 10; i++) {
 
-                var alea = aleatoire(0,lengthWhite);
+                    var alea = aleatoire(0, lengthWhite);
 
-                var idTouch = toucheBlanche.data[alea].tId;
-                var nomTouch = toucheBlanche.data[alea].nom;
+                    var idTouch = toucheBlanche.data[alea].tId;
+                    var nomTouch = toucheBlanche.data[alea].nom;
 
-                arrayNotes.push({id:idTouch, name:nomTouch});
+                    arrayNotes.push({id:idTouch, name:nomTouch});
+                }
+            }
+            else {
+                for (var i = 0; i < 10; i++) {
+                    if (aleatoire(0, 3) < 2) {
+                        var alea = aleatoire(0, lengthWhite);
+
+                        var idTouch = toucheBlanche.data[alea].tId;
+                        var nomTouch = toucheBlanche.data[alea].nom;
+                    }
+                    else {
+                        var alea = aleatoire(0, lengthBlack);
+
+                        var idTouch = toucheNoire.data[alea].tId;
+                        var nomTouch = toucheNoire.data[alea].nom;
+                    }
+                    arrayNotes.push({id:idTouch, name:nomTouch});
+                }
             }
         }
 

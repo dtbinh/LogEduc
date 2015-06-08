@@ -71,7 +71,23 @@ function chronoReset() {
 }
 
 function chronoStop() {
-    modifierEnonce("Pas mal! Vous avez trouvez "+score+" réponses! <br\/><div id=\"chrono\">Temps restant : <div id=\"temps\">0:00:00:000<\/div><\/div>");
+    if(score >= 20 && level < 3) {
+        modifierEnonce("Super! Vous avez trouvez "+score+" réponses! " +
+            "Vous avez gagné un niveau! <br\/>" +
+            "<div id=\"chrono\">Temps restant : <div id=\"temps\">0:00:00:000<\/div><\/div>");
+        var exo = "exo=" + 33;
+        $.ajax({
+            type: 'GET',
+            url: "/LogEduc/Exercices/Portee/webapp/levelup.php",
+            data: exo,
+            success: function (data) {
+                modifierEnonce("Fin! Nombre erreur = "+nbErreur+" Félicitation tu gagnes un niveau!");
+            }
+        });
+    }
+    else {
+        modifierEnonce("Pas mal! Vous avez trouvez "+score+" réponses! <br\/><div id=\"chrono\">Temps restant : <div id=\"temps\">0:00:00:000<\/div><\/div>");
+    }
     $('#temps').fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
     clearTimeout(timerID);
 }

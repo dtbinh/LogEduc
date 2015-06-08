@@ -1,3 +1,11 @@
+<?php session_start();
+require_once('../../db/database.php');
+spl_autoload_register('loadClass');
+//if(!isset($_SESSION['user']) || $_SESSION['username'] != "-error-") header('Location: accueil.php');
+$user = unserialize($_SESSION['user']);
+$level = getLevelByUser($user);
+?>
+
 <!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <!--[if IE 7 ]> <html lang="fr" class="ie7">    <![endif]-->
@@ -21,7 +29,7 @@
 <body>
 
     <!-- Piano -->
-    <ul class="piano">
+    <ul class="piano" id="piano">
         <li class="key" style="display: none" level="1">
             <span class="white-key" data-key="20" data-note="1C"></span>
             <span class="black-key" data-key="65" data-note="1Cs"></span>
@@ -39,7 +47,7 @@
         </li>
         <li class="key" style="display: none" level="1">
             <span class="white-key" data-key="70" data-note="1G"></span>
-            <span class="black-key" data-key="84" data-note="1Gs">></span>
+            <span class="black-key" data-key="84" data-note="1Gs"></span>
         </li>
         <li class="key" style="display: none" level="1">
             <span class="white-key" data-key="71" data-note="2A"></span>
@@ -89,31 +97,27 @@
 
     <!-- End Site -->
 
+    <div id="niveauEtu">
+    	<?php echo $level['Piano']['Exo3']; ?>
+    </div>
+
     <!-- Scripts -->
     <script type="text/javascript" src="assets/js/scripts.min.js"></script>
-    <script>/*
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-45159592-1', 'felipefialho.com');
-      ga('send', 'pageview');
-    */
-    </script>
-
     <script type="text/javascript" src="./assets/js/_scripts/_jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="./assets/js/_scripts/data_notes.js"></script>
     <script type="text/javascript" src="./assets/js/_scripts/chrono.js"></script>
     <script type="text/javascript" src="./assets/js/_scripts/generatePiano.js"></script>
     <script type="text/javascript" src="./assets/js/_scripts/enonceEtBullesNotes.js"></script>
+    <script type="text/javascript" src="assets/js/_scripts/cours.js"></script>
     <script type="text/javascript" src="assets/js/_scripts/exercice1.js"></script>
     <script type="text/javascript" src="assets/js/_scripts/exercice2.js"></script>
     <script type="text/javascript" src="assets/js/_scripts/exerciceChrono.js"></script>
     <script type="text/javascript" src="./assets/js/_scripts/enseignant.js"></script>
-    <script type="text/javascript" src="./assets/js/_scripts/_general.js"></script>
+    <script type="text/javascript" src="./assets/js/_scripts/perso.js"></script>
+    <script type="text/javascript" src="./assets/js/_scripts/_generalEx3.js"></script>
     <script type="text/javascript" src="./assets/js/_scripts/howler.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 
 </body>
 </html>

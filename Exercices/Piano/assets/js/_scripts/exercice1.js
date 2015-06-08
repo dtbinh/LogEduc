@@ -22,7 +22,19 @@ var suppNote = function(note,level) {
         //var $noteSuivante = $('#note'+numnote);
         var $noteSuivante = $('div[ordre=note'+numnote+']');
         if($noteSuivante.length == 0) {
-            modifierEnonce("fin! nb erreur = "+nbErreur);
+            modifierEnonce("Fin! Nombre erreur = "+nbErreur);
+
+            if(nbErreur < 4 && level < 3) {
+                var exo = "exo=" + 31;
+                $.ajax({
+                    type: 'GET',
+                    url: "/LogEduc/Exercices/Portee/webapp/levelup.php",
+                    data: exo,
+                    success: function (data) {
+                        modifierEnonce("Fin! Nombre erreur = "+nbErreur+" Félicitation tu gagnes un niveau!");
+                    }
+                });
+            }
         }
         else {
             $noteSuivante.addClass('next');
@@ -44,7 +56,17 @@ var suppNote = function(note,level) {
         var indice = touches.index[idDateAppuye];
         var noteFausse = touches.data[indice].nom;
 
-        var baliseEnonce = "Ce n'est pas la bonne note! Vous avez joué un "+ noteFausse + "<br\/>";
+        var $noteCorrect = $('span[data-note='+dataActuelle+']');
+        var idDataCorrect = $noteCorrect.attr('id-database');
+        var indiceReponse = touches.index[idDataCorrect];
+        var before = touches.data[indiceReponse].before;
+        var after = touches.data[indiceReponse].after;
+        var couleur = touches.data[indiceReponse].couleur;
+
+        console.log(dataActuelle +" "+ idDataCorrect +" " + indiceReponse);
+
+        var baliseEnonce = "Ce n'est pas la bonne note! Vous avez joué un "+ noteFausse + "." +
+            " La note cherché se trouve entre un <FONT size=\"4\" color='blue'>"+before+" et un "+after+"<\/FONT>, et la touche est "+couleur+"<br\/>";
         baliseEnonce += enonceEx1(level);
         modifierEnonce(baliseEnonce);
         nbErreur ++;

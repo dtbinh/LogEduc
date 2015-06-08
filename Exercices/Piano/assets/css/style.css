@@ -14,13 +14,18 @@
 .key {
   display: inline-block;
   position: relative;
-  margin: 0 2px;
   width: 6%;
+  margin: 0 0.6px;
   max-width: 85px;
 }
 .key:active .black-key,
 .key.active .black-key {
   top: -5px;
+}
+.key:active .black-key,
+.key.active .black-key,
+.key.lesson .black-key {
+  top: -2px;
 }
 .key .white-key {
   background: -webkit-linear-gradient(-30deg, #f8f8f8, #ffffff);
@@ -30,9 +35,9 @@
   box-shadow: inset 0 1px 0px #ffffff, inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px 0px 0px #ffffff, 0 4px 3px rgba(0, 0, 0, 0.7), inset 0 -1px 0px #ffffff, inset 1px 0px 0px #ffffff, inset -1px -1px 15px rgba(0, 0, 0, 0.5), -3px 4px 6px rgba(0, 0, 0, 0.5);
   display: block;
   height: 300px;
-  /**
-     * Pour tenter de renverser le texte sur les notes ... Marche pas!
-     */
+}
+.key .white-key.lesson {
+  height: 120px;
 }
 .key .white-key:active,
 .key .white-key.active {
@@ -44,16 +49,10 @@
   top: -5px;
   height: 295px;
 }
-.key .white-key .vertical-text {
-  vertical-align: bottom;
-  margin-top: 200px;
-  font-family: verdana, sans-serif;
-  color: #000000;
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
+.key .white-key:active.lesson,
+.key .white-key.active.lesson {
+  top: -2px;
+  height: 118px;
 }
 .key .black-key {
   content: "";
@@ -71,6 +70,9 @@
   right: -40%;
   width: 70%;
   z-index: 10;
+}
+.key .black-key.lesson {
+  height: 80px;
 }
 .key .black-key:active,
 .key .black-key.active {
@@ -93,6 +95,15 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+.titre {
+  background-color: #1e90ff;
+  border: 1px solid #808080;
+  text-align: center;
+}
+.scrollable {
+  height: 400px;
+  overflow-y: scroll;
 }
 [class*="col-xs-4"],
 [class*="col-xs-3"],
@@ -159,13 +170,32 @@ footer {
   text-align: center;
   position: relative;
 }
-/*
-[data-note*="1C"] {
-  background-color: #ffff00;
-}*/
+#BulleText {
+  text-align: center;
+  vertical-align: middle;
+  width: 300px;
+  height: 250px;
+  background-image: url("../img/ico/BulleFond.jpeg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 300px 250px;
+}
+#TextContent {
+  text-align: center;
+  vertical-align: middle;
+  margin: 10%;
+  margin-left: 12%;
+  width: 80%;
+  height: 80%;
+}
 @media (min-width: 768px) {
   .container {
     width: 100%;
+  }
+}
+@media (max-width: 1039px) {
+  :nth-child(14) {
+    display: none;
   }
 }
 @media (max-width: 767px) {

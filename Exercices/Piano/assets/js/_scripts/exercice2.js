@@ -3,7 +3,7 @@
  */
 
 
-function valideReponse(note) {
+function valideReponse(note,level) {
 
     var reponse = noteAlea[numnote-1].id;
 
@@ -18,16 +18,32 @@ function valideReponse(note) {
         var reponseCmp = noteAlea[numnote-1].dataId;
 
         var indices = jsonAideReponseNoteSimple;
+        if(level == 3) {
+            indices = jsonAideReponseNoteLong;
+        }
+
         var index = indices.index[reponseCmp];
         var before = indices.data[index].before;
         var after = indices.data[index].after;
 
-        modifierEnonce("Raté! La note cherché se trouve entre un "+before+" et un "+after+" <button onclick=\"jouerEnonceEx2()\">Rejouer note<\/button>");
+        modifierEnonce("Raté! La note cherché se trouve entre un <FONT size=\"4\" color='blue'>"+before+" et un "+after+"<\/FONT> <button onclick=\"jouerEnonceEx2()\">Rejouer note<\/button>");
         nbErreur++;
     }
 
     if(numnote > noteAlea.length) {
         modifierEnonce("Bien joué! Nombres d'erreurs : " + nbErreur);
+
+        if(nbErreur < 4 && level < 3) {
+            var exo = "exo=" + 32;
+            $.ajax({
+                type: 'GET',
+                url: "/LogEduc/Exercices/Portee/webapp/levelup.php",
+                data: exo,
+                success: function (data) {
+                    modifierEnonce("Fin! Nombre erreur = "+nbErreur+" Félicitation tu gagnes un niveau!");
+                }
+            });
+        }
     }
 };
 
@@ -129,7 +145,7 @@ var generateExercicePiano2 = function (level) {
     $mesBullesDeNotes.addClass('white-key');
 
     noteAlea = [];
-    for(var i = 0 ; i < 3 ; i ++) {
+    for(var i = 0 ; i < 12 ; i ++) {
         /*
          var alea = aleatoire(0,lengthWhite);
 
@@ -160,7 +176,7 @@ var generateExercicePiano2 = function (level) {
                 var nomTouch = toucheNoire.data[alea].nom;
                 var dataId = toucheNoire.data[alea].id;
             }
-            var dataId = toucheBlanche.data[alea].id;
+            //var dataId = toucheBlanche.data[alea].id;
             noteAlea[i] = {id:idTouch, name:nomTouch, dataId:dataId};
         }
     }
