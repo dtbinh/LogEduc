@@ -19,6 +19,9 @@
 
 </head>
 <body>
+	
+	<a href="/LogEduc/"><button class="btn btn-success menu">Retour menu</button></a>
+	<a href="/LogEduc/"><button class="btn btn-primary menu">Sauvegarder exercices</button></a>
 
     <!-- Piano -->
     <ul class="piano" id="piano">
