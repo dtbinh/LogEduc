@@ -78,7 +78,7 @@ function levelUp()
           url: "/LogEduc/Exercices/Portee/webapp/levelup.php", 
            data: exo,
             success: function (data) {
-                  alert("Félicitaion, tu as augmenté d'un niveau !");          
+                  alert("Félicitation, tu as augmenté d'un niveau !");          
             }
         });
 }

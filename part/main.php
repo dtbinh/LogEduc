@@ -47,10 +47,10 @@ $level = getLevelByUser($user);
 <section id="panelExercices">
     <table><tr>
         <td class="tdPanelLvl1">
-            <button class="btnInstru buttonPanel btn btn-success">Instruments<br>Niveau <?= $level['Instruments'] ?></button>
+            <button class="btnInstru buttonPanel btn btn-success">Instruments<br></button>
                 <table class="subTableExercice tableInstru"><tr>
-                    <td><a href="coursInstruments.php"><button class="btn btn-success">Cours</button></a></td>
-                    <td><a href="../Exercices/Instruments/quiz.php"><button class="btn btn-success">Exercices</button></a></td>
+                    <td><a href="../Exercices/Instruments/indexCours.php"><button class="btn btn-success">Cours</button></a></td>
+                    <td><a href="../Exercices/Instruments/indexEx.php"><button class="btn btn-success">Exercices</button></a></td>
                 </tr></table>
         </td>
         <td class="tdPanelLvl1">
